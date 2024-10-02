@@ -6,7 +6,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node bin/server.js",
-    "build": "node ace build",
+    "build": "node ace build && cp .env build\\ && cd build && npm ci --omit=dev && npm run start",
+    "build2": "node ace build && copy .env build\\ && cd build && npm ci --omit=dev && npm run start",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
     "lint": "eslint .",
