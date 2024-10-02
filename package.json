@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node bin/server.js",
-    "build": "node ace build && cp .env build/ && sed -i 's/NODE_ENV=development/NODE_ENV=production/g' build/.env && cd build && npm ci --omit=dev && npm run start",
+    "build": "./start/build.sh",
     "build2": "node ace build && copy .env build\\ && powershell -Command \"(Get-Content build\\.env) -replace 'NODE_ENV=development', 'NODE_ENV=production' | Set-Content build\\.env\" && cd build && npm ci --omit=dev && npm run start",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
