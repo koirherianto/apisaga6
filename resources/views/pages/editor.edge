@@ -1,0 +1,245 @@
+@layout.app({ title: project.title + " Edit | Apisaga"})
+
+@slot('meta')
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+@endslot
+
+<body class="flex flex-col h-screen">
+  <!-- Header -->
+  <header>
+    <div class="navbar bg-base-100 border-y">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              view="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><a>Item 1s</a></li>
+            <li>
+              <a>Parent</a>
+              <ul class="p-2">
+                <li><a>Submenu 1</a></li>
+                <li><a>Submenu 2</a></li>
+              </ul>
+            </li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </div>
+        <a class="btn btn-ghost text-xl">{{ project.title }} | Apisaga</a>
+      </div>
+
+      {{--  center  --}}
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal bg-base-200 rounded-box mt-3 center flex justify-center">
+          <li>
+            <a href="{{ route('projects.index') }}" class="tooltip" data-tip="Back">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('pages.index', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}" class="tooltip tooltip-info" data-tip="Real View" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="tooltip" data-tip="Stats">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {{--  rigt top bar  --}}
+      <div class="navbar-end">
+        <a onclick="handleSimpan(); return false;" class="btn btn-success text-gray-50">Simpan</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout Wrapper -->
+  <div class="flex flex-1">
+    <!-- Left Sidebar -->
+    <aside class="flex flex-col w-64 h-full px-5 py-2 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+        <div class="flex flex-col justify-between flex-1 mt-6">
+            <nav class="flex-1 -mx-3 space-y-1"> 
+              {{--  @each(page in pages)
+                <a
+                  class="flex items-center py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 justify-between"  
+                  href="/{{project.slug}}/{{version.slug}}/{{topbar.slug}}/{{page.slug}}/editor"
+                >
+                  <span class="mx-2 text-sm font-medium">{{ page.name }}</span>
+                  <svg onclick="event.preventDefault(); document.getElementById('update_page_modal').showModal()"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                  </svg>
+                </a>
+              @end  --}}
+
+              @each(page in pages)
+                <a
+                  class="flex items-center py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 justify-between"
+                  href="/{{project.slug}}/{{version.slug}}/{{topbar.slug}}/{{page.slug}}/editor"
+                >
+                  <span class="mx-2 text-sm font-medium">{{ page.name }}</span>
+                  <!-- Tombol Edit -->
+                  <svg 
+                    data-page-name="{{ page.name }}" 
+                    data-page-id="{{ page.id }}" 
+                    onclick="event.preventDefault(); openEditModal(this)" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke-width="1.5" 
+                    stroke="currentColor" 
+                    class="size-6"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                  </svg>
+                </a>
+              @endeach
+
+
+              <div class="divider my-2"></div>
+              <a onclick="create_page_modal.showModal()" class="btn flex items-center py-2 transition-colors duration-300 transform rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+                <span class="mx-2 text-sm font-medium">+ Create Page +</span>
+              </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <textarea id="my-text-area"></textarea>
+    </main>
+  </div>
+
+  <dialog id="create_page_modal" class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Create Page</h3>
+      <form action="{{ route('pages.store', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}" method="POST">
+        {{ csrfField() }}
+        <p class="py-4">Title</p>
+        <input name="title" type="text" placeholder="Some Title in here" class="input input-ghost w-full max-w-xs" />
+        <button type="submit" class="btn btn-success text-white mx-2">CREATE</button>
+      </form>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <dialog id="update_page_modal" class="modal">
+      <div class="modal-box">
+          <h3 class="text-lg font-bold">Update</h3>
+          <p class="py-4">Title</p>
+
+          <!-- Form untuk update -->
+          <form id="updateForm" action="" method="POST">
+              {{ csrfField() }}
+              <input id="pageNameInput" type="text" placeholder="Some Title in here" class="input input-ghost w-full max-w-xs" />
+              <button type="submit" class="btn btn-success text-white mx-2">Update</button>
+          </form>
+
+          <!-- Form untuk delete -->
+          <form id="deleteForm" action="{{ route('pages.destroy', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}?_method=delete" method="POST">
+              {{ csrfField() }}
+              <input type="hidden" name="id" id="delete_id">
+              <button type="submit" class="btn btn-error text-white mx-2">Delete</button>
+          </form>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+      </form>
+  </dialog>
+
+
+  @!component('components/toast', { name: 'notification' })
+  
+  <script>
+    const easymde = new EasyMDE({
+      autofocus: true,
+      initialValue: `{{ currentPage.content }}`,
+      element: document.getElementById('my-text-area'),
+      toolbar: [
+        'undo','redo', '|', 'heading','heading-2','heading-3','|',
+        {
+          // table
+          name: 'xtable',
+          className: "fa fa-table p-0",
+          action: function drawTable(editor) {
+            var cm = editor.codemirror;
+            var table = '| Header 1 | Header 2 | Header 3 |\n';
+            table += '| -------- | -------- | -------- |\n';
+            table += '| Column 1 | Column 2 | Column 3 |\n';
+            cm.replaceSelection(table);
+          },
+        }, 
+        'bold', 'italic','strikethrough','|',
+        'code','quote', 'clean-block','unordered-list', 'ordered-list', '|',
+        'link', 'image', '|',
+        'preview', 'side-by-side', 'fullscreen', '|',
+        'guide',
+      ],
+
+    });
+
+    async function handleSimpan() {
+      const response = await fetch('{{ route('pages.update', [project.slug,version.slug,topbar.slug,currentPage.slug]) }}', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: easymde.value(),
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert('Content saved successfully!');
+      } else {
+        alert('Failed to save content!');
+      }
+    }
+
+    function openEditModal(element) {
+      // Dapatkan nama kucing dan ID dari atribut data
+      const pageName = element.getAttribute('data-page-name');
+      const pageId = element.getAttribute('data-page-id');
+
+      // Set nilai dari input di modal
+      document.getElementById('pageNameInput').value = pageName;
+
+      // Set action form ke route yang sesuai
+      const formAction = `/your-update-route/${pageId}`; // Ganti dengan route yang sesuai
+      document.getElementById('updateForm').action = formAction;
+
+      document.getElementById('delete_id').value = pageId;
+
+      // Tampilkan modal
+      document.getElementById('update_page_modal').showModal();
+  }
+
+  </script>
+</body>
+@end
