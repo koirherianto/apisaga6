@@ -7,7 +7,10 @@ const ProfilesController = () => import('#controllers/profiles_controller')
 const PagesController = () => import('#controllers/pages_controller')
 import { middleware } from './kernel.js'
 import router from '@adonisjs/core/services/router'
-// router.on('/').renderInertia('home', { version: 6 })
+
+router.get('/tes', async () => {
+    return { message: 'Hello world' }
+})
 
 router.get('/', [LandingController, 'index'])
 
