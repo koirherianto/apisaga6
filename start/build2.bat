@@ -12,6 +12,8 @@ powershell -Command "(Get-Content build\.env) -replace 'NODE_ENV=development', '
 cd build
 npm ci --omit=dev
 
-:: Jalan npm run start
-npm run start
+:: Debugging: cetak direktori setelah cd build
+echo Current directory after cd: %CD%
 
+:: Jalankan npm run start dengan 'call'
+call npm run start
