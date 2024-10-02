@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node bin/server.js",
     "build": "./start/build.sh",
-    "build2": "node ace build && copy .env build\\ && powershell -Command \"(Get-Content build\\.env) -replace 'NODE_ENV=development', 'NODE_ENV=production' | Set-Content build\\.env\" && cd build && npm ci --omit=dev && npm run start",
+    "build2": "start/build2.bat",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
     "lint": "eslint .",
