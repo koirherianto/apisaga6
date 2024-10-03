@@ -1,6 +1,10 @@
 @layout.app({ title: project.title + " Edit | Apisaga"})
 
 @slot('meta')
+  <meta name="description" content="Edit page content for {{ project.title }} project" />
+  <meta name="keywords" content="apisaga, project, edit, page, content" />
+  <meta name="author" content="Apisaga" />
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 @endslot

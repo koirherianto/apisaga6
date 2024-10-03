@@ -3,7 +3,6 @@ import Project from '#models/project'
 import Topbar from '#models/topbar'
 import Version from '#models/version'
 import { marked } from 'marked'
-import { dd } from '@adonisjs/core/services/dumper'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class PagesController {
@@ -201,16 +200,6 @@ export default class PagesController {
         version = await project.related('versions').query().firstOrFail()
       }
     }
-
-    // dd(await version.related('topbars').query())
-    // dd(version)
-    // dd(topbarSlug)
-    // if (topbarSlug) {
-    //   dd('esfe')
-    // }else{
-    //   // dd('sdfcse')
-    // }
-    // dd(await version.related('topbars').query().where('slug', topbarSlug).firstOrFail())
 
     // jika topbar dikirim
     let topbar
