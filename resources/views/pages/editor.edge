@@ -150,24 +150,29 @@
 
   <dialog id="update_page_modal" class="modal">
       <div class="modal-box">
-          <h3 class="text-lg font-bold">Update</h3>
-          <p class="py-4">Title</p>
-
-          <!-- Form untuk update -->
-          <form id="updateForm" action="{{ route('pages.updateTitle', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}?_method=patch" method="POST">
-              {{ csrfField() }}
-              <input id="title_update" name="title_update" type="text" placeholder="Some Title in here" class="input input-ghost w-full max-w-xs" />
-              <input type="hidden" name="page_id_update" id="page_id_update">
-              <button type="submit" class="btn btn-success text-white mx-2">Update</button>
-          </form>
-
-          <!-- Form untuk delete -->
-          <form id="deleteForm" action="{{ route('pages.destroy', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}?_method=delete" method="POST">
-              {{ csrfField() }}
-              <input type="hidden" name="id" id="page_id_delete">
-              <button type="submit" class="btn btn-error text-white mx-2">Delete</button>
-          </form>
+        <h3 class="text-lg font-bold">Update</h3>
+        <p class="py-4">Title</p>
+    
+        <!-- Form untuk update -->
+        <form id="updateForm" action="{{ route('pages.updateTitle', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}?_method=patch" method="POST">
+            {{ csrfField() }}
+            <input id="title_update" name="title_update" type="text" placeholder="Some Title in here" class="input input-ghost w-full max-w-xs" />
+            <input type="hidden" name="page_id_update" id="page_id_update">
+            
+            <!-- Wrapper untuk tombol update dan delete -->
+            <div class="flex justify-end space-x-2 mt-4">
+                <button type="submit" class="btn btn-success text-white">Update</button>
+                <button type="button" class="btn btn-error text-white" onclick="document.getElementById('deleteForm').submit()">Delete</button>
+            </div>
+        </form>
+    
+        <!-- Form untuk delete -->
+        <form id="deleteForm" action="{{ route('pages.destroy', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}?_method=delete" method="POST" class="hidden">
+            {{ csrfField() }}
+            <input type="hidden" name="id" id="page_id_delete">
+        </form>
       </div>
+  
       <form method="dialog" class="modal-backdrop">
           <button>close</button>
       </form>
