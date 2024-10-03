@@ -38,6 +38,7 @@ router.group(() => {
     router.post(':projectSlug/:versionSlug/:topbarSlug/:pageSlug', [PagesController, 'store']).as('pages.store')
     router.get(':projectSlug/:versionSlug/:topbarSlug/:pageSlug/editor', [PagesController, 'editor']).as('pages.editor')
     router.put('/api/:projectSlug/:versionSlug/:topbarSlug/:pageSlug', [PagesController, 'update']).as('pages.update') // no csrf
+    router.patch(':projectSlug/:versionSlug/:topbarSlug/:pageSlug', [PagesController, 'updateTitle']).as('pages.updateTitle') // no csrf
     router.delete(':projectSlug/:versionSlug/:topbarSlug/:pageSlug', [PagesController, 'destroy']).as('pages.destroy') // no csrf
     
 }).middleware(middleware.auth())

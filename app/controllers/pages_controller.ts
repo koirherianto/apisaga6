@@ -3,6 +3,7 @@ import Project from '#models/project'
 import Topbar from '#models/topbar'
 import Version from '#models/version'
 import { marked } from 'marked'
+import { dd } from '@adonisjs/core/services/dumper'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class PagesController {
@@ -120,6 +121,38 @@ export default class PagesController {
     })
   }
 
+  async updateTitle({ params, request, response }: HttpContext) {
+    const project = await Project.query().where('slug', params.projectSlug).firstOrFail()
+
+    const [version, topbar, , currentPage] = await this.pages(
+      project,
+      params.versionSlug,
+      params.topbarSlug,
+      params.pageSlug
+    )
+
+    const pageWantoUpdate = await Page.query()
+      .where('id', request.input('page_id_update'))
+      .firstOrFail()
+
+    if (request.input('title_update').length < 4) {
+      return response.redirect().back()
+    }
+
+    pageWantoUpdate.name = request.input('title_update')
+
+    await pageWantoUpdate.save()
+
+    const newCurrentPage = await Page.findOrFail(currentPage.id)
+
+    return response.redirect().toRoute('pages.editor', {
+      projectSlug: project.slug,
+      versionSlug: version.slug,
+      topbarSlug: topbar.slug,
+      pageSlug: newCurrentPage.slug,
+    })
+  }
+
   // destroy
   async destroy({ session, params, response, request }: HttpContext) {
     const pageWantToDelete = await Page.query().where('id', request.input('id')).firstOrFail()
@@ -169,6 +202,16 @@ export default class PagesController {
       }
     }
 
+    // dd(await version.related('topbars').query())
+    // dd(version)
+    // dd(topbarSlug)
+    // if (topbarSlug) {
+    //   dd('esfe')
+    // }else{
+    //   // dd('sdfcse')
+    // }
+    // dd(await version.related('topbars').query().where('slug', topbarSlug).firstOrFail())
+
     // jika topbar dikirim
     let topbar
     if (topbarSlug) {
@@ -181,6 +224,7 @@ export default class PagesController {
     }
 
     let page
+    // dd(pageSlug)
     if (pageSlug) {
       page = await topbar.related('pages').query().where('slug', pageSlug).firstOrFail()
     } else {

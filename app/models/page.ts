@@ -45,7 +45,6 @@ export default class Page extends BaseModel {
   @beforeUpdate()
   static async updateSlug(page: Page) {
     page.slug = string.slug(page.name, { lower: true })
-    // page.save()
   }
 
   @belongsTo(() => Topbar)
