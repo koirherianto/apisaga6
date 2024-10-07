@@ -18,7 +18,7 @@ export default class PagesController {
 
     currentPage.content = await marked.parse(currentPage.content ?? '')
 
-    return view.render('pages/index', { project, version, topbar, pages, currentPage })
+    return view.render('pages/index2', { project, version, topbar, pages, currentPage })
   }
 
   async store({ session, params, request, response }: HttpContext) {

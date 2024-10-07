@@ -1,0 +1,1285 @@
+
+@layout.app({ title: " Apisaga | Write, Manage, and Share Your Documentation."})
+    <header class="h-[72px] container mx-auto">
+      <!-- navbar-start -->
+      <nav class="navbar flex bg-white items-center">
+        <!-- sidebar mobile version start -->
+        <div class="drawer block md:hidden mt-2">
+          <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content">
+            <!-- Page content here -->
+            <!-- <label for="my-drawer" class="flex gap-1 z-30">
+              <img src="public/menu.svg" alt="" />
+              <a class="text-2xl md:text-xl text-slate-900 font-bold block md:hidden mt-1">Apisaga</a>
+            </label> -->
+          </div>
+          <div class="drawer-side z-20">
+            <label
+              for="my-drawer"
+              class="drawer-overlay"
+              aria-label="close sidebar"
+            >
+            </label>
+            <ul class="menu bg-white text-base-content min-h-full w-full p-4">
+              <!-- sidebar tittle api saga mobile -->
+              <div class="flex justify-between items-center">
+                <label for="my-drawer" class="flex space-x-1">
+                    
+                  <img src="{{ asset('resources/images/docs/menu.svg') }}" alt="" />
+                  <a class="text-slate-900 font-bold block md:hidden mt-3 text-sm md:text-lg">
+                    Apisaga
+                  </a>
+                </label>
+                <div class="flex gap-2">
+                  <img
+                    src="{{ asset('resources/images/docs/sun-tab.svg') }}"
+                    alt=""
+                    class="h-[24px] w-[24px]"
+                  />
+                  <img src="{{ asset('resources/images/docs/git.svg') }}" alt="" class="h-[24px] w-[24px]" />
+                </div>
+              </div>
+              <!-- Sidebar content here -->
+              <li class="font-bold text-gray-900 mt-4">Project</li>
+              <li class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900">
+                <a href="#">Instruction</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Providers</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Changelog</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Roadmap</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">FAQ</a>
+              </li>
+              <li><a href="#">Project Structure</a></li>
+              <li class="font-bold text-gray-900 mt-4">Getting Started</li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Installation</a>
+              </li>
+              <li class="font-bold text-gray-900 mt-4">Guides</li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Enable Anthropic Cache</a>
+              </li>
+              <li class="font-bold text-gray-900 mt-4">Pages</li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Dashboard</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Logs</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Configuration</a>
+              </li>
+              <li
+                class="text-gray-400 font-normal hover:text-gray-900 active:text-gray-900"
+              >
+                <a href="#">Statistics</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- sidebar mobile version end -->
+
+        <!-- navbar desktop start -->
+        <div class="flex-1">
+          <a
+            class="btn btn-ghost text-2xl md:text-xl text-slate-900 font-bold hidden md:block mt-3"
+            >Apisaga</a
+          >
+          <div class="gap-[32px] items-center hidden lg:block">
+            <div class="flex gap-[10px]">
+              <ul class="text-md text-slate-900 font-medium">
+                <li>
+                  <a href="#">Golang</a>
+                </li>
+              </ul>
+              <ul class="text-md text-slate-400 font-light hover:text-gray-900 active:text-gray-900">
+                <li>
+                  <a href="#">React</a>
+                </li>
+              </ul>
+              <ul class="text-md text-slate-400 font-light hover:text-gray-900 active:text-gray-900">
+                <li>
+                  <a href="#">Tailwind</a>
+                </li>
+              </ul>
+              <ul class="text-md text-slate-400 font-light hover:text-gray-900 active:text-gray-900">
+                <li>
+                  <a href="#">Bootstrap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-none gap-4 md:gap-1 mt-[10px] md:mt-0">
+          <!-- search with modal -->
+          <div class="form-control relative" id="open-search-modal-input">
+            <button class="relative md:block lg:hidden">
+              <img
+                src="{{ asset('resources/images/docs/search-tab.svg') }}"
+                alt=""
+                class="w-[32px] h-[32px]mt-2 pl-1 items-center"
+              />
+            </button>
+            <button class="hidden lg:block">
+              <img
+                src="{{ asset('resources/images/docs/search-normal.svg') }}"
+                alt=""
+                class="w-[32px] h-[32px] absolute mt-2 pl-1 items-center"
+              />
+              <img
+                src="{{ asset('resources/images/docs/search-decor.png') }}"
+                alt=""
+                class="w-[32px] h-[22px] absolute items-center end-2 mt-4"
+              />
+              <input
+                type="text"
+                placeholder="Search"
+                class="input input-bordered w-24 md:w-auto bg-white pl-10"
+              />
+            </button>
+          </div>
+
+          <!-- Modal Search -->
+          <div
+            id="search-modal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden backdrop-blur-sm p-4 md:p-0"
+          >
+            <div class="bg-white rounded-lg p-6 w-full max-w-md relative">
+              <div class="flex relative items-center">
+                <img
+                  src="{{ asset('resources/images/docs/search-modal.svg') }}"
+                  alt=""
+                  class="absolute start-2"
+                />
+                <input
+                  id="modal-search-input"
+                  type="text"
+                  class="w-full p-4 border border-gray-300 border-b-2 rounded-lg bg-white text-center focus:outline-none"
+                  placeholder="Search..."
+                />
+                <img
+                  src="{{ asset('resources/images/docs/close-circle-modal.svg') }}"
+                  alt=""
+                  class="absolute end-2 cursor-pointer"
+                  id="close-search-modal"
+                />
+              </div>
+
+              <!-- Hasil pencarian -->
+              <ul
+                id="search-results"
+                class="mt-4 text-gray-900 font-medium"
+              ></ul>
+
+              <!-- Messsage 'Not Found' -->
+              <div id="not-found" class="hidden mt-4">
+                <p class="text-gray-900 font-medium text-center text-lg">
+                  No results found
+                </p>
+                <p class="text-gray-300 text-thin mt-2 text-center">
+                  We are currently unable to find any results for that search
+                  term. Please try searching for something else.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative md:block hidden">
+            <img
+              src="{{ asset('resources/images/docs/sun-tab.svg') }}"
+              alt=""
+              class="w-[32px] h-[32px] items-center ml-4"
+            />
+          </div>
+
+          <!-- Modal Search -->
+          <div
+            id="search-modal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden z-50 backdrop-blur-sm p-4 md:p-0"
+          >
+            <div class="bg-white rounded-lg p-6 w-full max-w-md relative">
+              <!-- Input Search di Modal -->
+              <div class="flex relative items-center">
+                <img
+                  src="{{ asset('resources/images/docs/search-modal.svg') }}"
+                  alt=""
+                  class="absolute start-2"
+                />
+                <input
+                  type="text"
+                  class="w-full p-4 border border-gray-300 border-b-2 rounded-lg bg-white text-center focus:outline-none"
+                  placeholder="search..."
+                  autofocus
+                />
+                <img
+                  src="{{ asset('resources/images/docs/close-circle-modal.svg') }}"
+                  alt=""
+                  class="absolute end-2"
+                  id="close-search-modal"
+                />
+              </div>
+              <!-- Hasil Search (Contoh) -->
+              <ul class="mt-4" id="search-results">
+                <p class="font-normal text-gray-900 text-lg md:text-xl">
+                  Getting Started
+                </p>
+                <li class="mt-4 bg-gray-100 rounded-xl">
+                  <a
+                    href="#installation"
+                    class="block p-2 hover:bg-gray-100 font-normal text-gray-900 text-sm md:text-md"
+                    >Installation
+                    <p class="font-bold text-sm md:text-md text-green-500 mt-2">
+                      #installation
+                    </p></a
+                  >
+                </li>
+                <li class="mt-4">
+                  <a
+                    href="#installation"
+                    class="block p-2 hover:bg-gray-100 font-normal text-gray-900 text-sm md:text-md"
+                    >Configuration
+                    <p class="font-bold text-sm md:text-md text-green-500 mt-2">
+                      #installation
+                    </p></a
+                  >
+                </li>
+                <li class="mt-4">
+                  <a
+                    href="#installation"
+                    class="block p-2 hover:bg-gray-100 font-normal text-gray-900 text-sm md:text-md"
+                    >Playbook
+                    <p class="font-bold text-sm md:text-md text-green-500 mt-2">
+                      #installation
+                    </p></a
+                  >
+                </li>
+              </ul>
+              <!-- Notifikasi 'Not Found' -->
+              <p id="not-found" class="hidden mt-4 text-center text-red-500">
+                Not Found
+              </p>
+            </div>
+          </div>
+
+          <!-- dropdown verison Language -->
+
+          <div class="dropdown dropdown-end bg-white hidden lg:block">
+            <div tabindex="0" role="button" class="btn btn-ghost">
+              <div class="w-24 rounded-none flex items-center">
+                <img src="{{ asset('resources/images/docs/language-square.png') }}" alt="" class="p-1" />
+                <p class="text-sm text-gray-900">English</p>
+                <img src="{{ asset('resources/images/docs/arrow-down.svg') }}" alt="" class="pl-1" />
+              </div>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a
+                  class="justify-between font-medium text-gray-900 active:text-gray-900"
+                >
+                  Language
+                  <span class="badge text-white">New</span>
+                </a>
+              </li>
+              <li class="bg-gray-100 font-medium text-gray-700 rounded-xl">
+                <a>English</a>
+              </li>
+              <li><a>Indonesian</a></li>
+            </ul>
+          </div>
+
+          <!-- dropdown verison Desktop -->
+          <div class="dropdown dropdown-end bg-white hidden lg:block">
+            <div tabindex="0" role="button" class="btn btn-ghost">
+              <div class="w-10 rounded-none flex items-center">
+                <p class="text-sm text-gray-900">1.0.0</p>
+                <img src="{{ asset('resources/images/docs/arrow-down.svg') }}" alt="" class="p-1" />
+              </div>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow bg-white"
+            >
+              <li>
+                <a
+                  class="justify-between font-medium text-gray-900 active:text-gray-900"
+                >
+                  version
+                  <span class="badge text-white">New</span>
+                </a>
+              </li>
+              <li class="bg-gray-100 font-medium text-gray-700 rounded-xl">
+                <a>1.0.1</a>
+              </li>
+              <li><a>1.0.0</a></li>
+            </ul>
+          </div>
+
+          <!-- dropdown profile Desktop -->
+          <div class="dropdown dropdown-end bg-white md:block hidden">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-ghost btn-circle avatar"
+            >
+              <div class="lg:w-10 rounded-full md:w-8">
+                <img alt="Tailwind CSS Navbar component" src="{{ asset('resources/images/docs/git.svg') }}" />
+              </div>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow bg-white"
+            >
+              <li>
+                <a
+                  class="justify-between font-medium text-gray-900 active:text-gray-900"
+                >
+                  Profile
+                  <span class="badge text-white">New</span>
+                </a>
+              </li>
+              <li><a>Settings</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+          <!-- navbar desktop end -->
+
+          <!-- Sidebar right tab and mobile version start -->
+          <div class="lg:hidden block gap-2 z-10">
+            <div class="drawer drawer-end">
+              <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+
+              <div class="drawer-content">
+                <!-- Page content here -->
+                <label for="my-drawer-4" class="w-24 h-24 hover:bg-slate-100">
+                  <img
+                    src="{{ asset('resources/images/docs/more-circle.svg') }}"
+                    alt="Menu icon"
+                    class="w-[32px] h-[32px]"
+                  />
+                </label>
+              </div>
+
+              <div class="drawer-side">
+                <label for="my-drawer-4" class="drawer-overlay"></label>
+                <ul
+                  class="menu bg-white text-base-content min-h-full md:w-80 w-full p-4 space-y-3"
+                >
+                  <div class="flex justify-between items-center mb-4">
+                    <div class="flex space-x-1">
+                      <a
+                        class="text-xl md:text-2xl text-slate-900 font-bold block"
+                      >
+                        API Saga
+                      </a>
+                    </div>
+                    <div class="flex gap-2 mr-2">
+                      <img
+                        src="{{ asset('resources/images/docs/sun-tab.svg') }}"
+                        alt="Sun icon"
+                        class="h-[24px] w-[24px] md:h-[32px] md:w-[32px]"
+                      />
+                      <img
+                        src="{{ asset('resources/images/docs/git.svg') }}"
+                        alt="Git icon"
+                        class="h-[24px] w-[24px] md:h-[32px] md:w-[32px]"
+                      />
+                      <label for="my-drawer-4" aria-label="close sidebar">
+                        <img
+                          src="{{ asset('resources/images/docs/close-circle.svg') }}"
+                          alt="Close icon"
+                          class="md:h-[34px] md:w-[34px] h-[24px] w-[24px] mt-0"
+                        />
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Sidebar Items -->
+                  <li
+                    class="text-gray-900 font-medium mb-3 text-sm md:text-lg hover:text-gray-900 active:text-gray-900"
+                  >
+                    <a href="#">Golang</a>
+                  </li>
+                  <li
+                    class="text-slate-400 font-light mb-3 text-sm md:text-lg hover:text-gray-900 active:text-gray-900"
+                  >
+                    <a href="#">React</a>
+                  </li>
+                  <li
+                    class="text-slate-400 font-light mb-3 text-sm md:text-lg hover:text-gray-900 active:text-gray-900"
+                  >
+                    <a href="#">Tailwind</a>
+                  </li>
+                  <li
+                    class="text-slate-400 font-light mb-3 text-sm md:text-lg hover:text-gray-900 active:text-gray-900"
+                  >
+                    <a href="#">Bootstrap</a>
+                  </li>
+
+                  <!-- Versions Dropdown -->
+                  <div class="collapse collapse-arrow mb-3 text-sm md:text-lg">
+                    <input type="checkbox" class="peer" checked />
+                    <div class="collapse-title text-md font-light">
+                      <span class="text-gray-900 font-medium text-sm md:text-lg"
+                        >Version</span
+                      >
+                    </div>
+                    <div class="collapse-content">
+                      <ul
+                        class="menu menu-compact border-l-2 border-gray-200 pl-2"
+                      >
+                        <li class="mb-2 text-gray-900 text-sm md:text-lg">
+                          <a href="#">1.0.0</a>
+                        </li>
+                        <li class="mb-2 text-gray-900 text-sm md:text-lg">
+                          <a href="#">1.0.1</a>
+                        </li>
+                        <li class="mb-2 text-gray-900 text-sm md:text-lg">
+                          <a href="#">1.0.0</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Language Dropdown -->
+                  <div class="collapse collapse-arrow mt-4">
+                    <input type="checkbox" class="peer" checked />
+                    <div class="collapse-title text-md font-light">
+                      <div class="flex items-center">
+                        <img
+                          src="{{ asset('resources/images/docs/language-square-mobile.svg') }}"
+                          alt="Language icon"
+                          class="w-[24px] h-[24px] md:w-[32px] md:h-[32px] mr-2"
+                        />
+                        <span
+                          class="text-gray-900 font-medium text-sm md:text-lg rounded-xl"
+                          >English</span
+                        >
+                      </div>
+                    </div>
+                    <div class="collapse-content">
+                      <ul
+                        class="menu menu-compact border-l-2 border-gray-200 pl-2"
+                      >
+                        <li
+                          class="mb-2 bg-gray-100 font-medium text-gray-700 rounded-xl text-sm md:text-lg"
+                        >
+                          <a href="#">English</a>
+                        </li>
+                        <li class="mb-2 text-gray-900 text-sm md:text-lg">
+                          <a href="#">Indonesia</a>
+                        </li>
+                        <li class="text-gray-900 text-sm md:text-lg">
+                          <a href="#">Arab</a>
+                        </li>
+                      </ul>
+                      <!-- Gray box -->
+                      <div
+                        class="w-full bg-gray-100 rounded-lg p-12 mt-32"
+                      ></div>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Sidebar right tab and mobile version end -->
+        </div>
+      </nav>
+    </header>
+
+    <!--blue block notif start -->
+    <div class="w-full h-[42px] bg-gradient-to-r from-blue-500 to-indigo-500">
+      <p
+        class="text-white font-normal text-center text-sm md:text-base lg:text-md pt-0 md:pt-2"
+      >
+        🎉 Exciting news! CursorLens Now supports Caching for Anthropic
+        <a href="#" class="underline text-white">Check out the guide</a>
+      </p>
+    </div>
+    <!--blue block notif end -->
+
+    <!-- main section start -->
+    <main class="container">
+      <div class="flex lg:flex-row">
+        <!-- Left Sidebar (Menu) - Desktop & Tablet -->
+        <div
+          class="md:w-1/3 p-4 lg:w-[32%] xl:w-[30%] bg-white h-screen md:h-screen lg:h-auto hidden md:block md:sticky top-0 mt-4 ml-0 lg:mr-4"
+        >
+          <div class="mt-4 sticky lg:top-4 top-0 overflow-y-auto">
+            <div class="flex">
+              <div class="max-w-full h-auto">
+                <img
+                  src="{{ asset('resources/images/docs/golang.svg') }}"
+                  alt="Golang logo"
+                  class="max-w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+            <h2 class="font-medium mb-4 text-gray-900 mt-6">Project</h2>
+            <ul class="ml-3">
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Instruction</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Providers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Changelog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Roadmap</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Project Structure</a
+                >
+              </li>
+            </ul>
+
+            <h2 class="font-medium text-xl mt-6 mb-4 text-gray-900">
+              Getting Started
+            </h2>
+            <ul class="ml-3">
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Installation</a
+                >
+              </li>
+            </ul>
+            <h2 class="font-medium text-xl mt-6 mb-4 text-gray-900">Guides</h2>
+            <ul class="ml-3">
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Enable Anthropic Cache</a
+                >
+              </li>
+            </ul>
+            <h2 class="font-medium text-xl mt-6 mb-4 text-gray-900">Pages</h2>
+            <ul class="ml-3">
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Logs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Configuration</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 hover:text-gray-900 active:text-gray-900"
+                  >Statistics</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Left Sidebar (Menu) - Desktop & Tablet end -->
+
+        <!-- Center Content start -->
+        <div class="w-full md:w-2/3 lg:w-3/5 xl:w-1/2 p-4 mt-8 flex flex-col">
+          <div>
+            <p class="text-sm">
+              Getting Started /
+              <span class="font-sm font-normal text-gray-900">Instruction</span>
+            </p>
+          </div>
+          <div class="flex items-center gap-4 mt-4">
+            <div class="flex gap-2">
+              <img src="{{ asset('resources/images/docs/eye.svg') }}" alt="eye" />
+              <p class="text-sm font-normal">1k watching</p>
+            </div>
+
+            <div class="flex gap-2">
+              <img src="{{ asset('resources/images/docs/magic-star.svg') }}" alt="star" />
+              <p class="text-sm font-normal">77.9 stars</p>
+            </div>
+            <div class="flex gap-2">
+              <img src="{{ asset('resources/images/docs/document.svg') }}" alt="document" />
+              <p class="text-sm font-normal">MIT License</p>
+            </div>
+          </div>
+          <!-- tab only on this page  -->
+          <div
+            class="md:block lg:hidden mt-8 w-full bg-white border border-1 border-b-2 border-gray-300 p-2 rounded-lg"
+          >
+            <div class="dropdown flex items-center justify-between w-full">
+              <label
+                tabindex="0"
+                class="cursor-pointer flex items-center justify-between w-full"
+              >
+                <span class="text-sm font-normal text-gray-900 ml-4"
+                  >On this page</span
+                >
+                <img src="{{ asset('resources/images/docs/arrow-down-tab.svg') }}" alt="" />
+              </label>
+              <ul
+                tabindex="0"
+                class="dropdown-content menu p-2 shadow bg-white rounded-box w-52"
+              >
+                <li><a href="#">Section 1</a></li>
+                <li><a href="#">Section 2</a></li>
+                <li><a href="#">Section 3</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h1 class="md:text-3xl text-2xl font-bold text-gray-900">
+              Instruction
+            </h1>
+            <div
+              class="p-4 lg:p-2 bg-gray-100 mt-4 rounded-md flex items-center lg:gap-1 md:gap-3 gap-3"
+            >
+              <img src="{{ asset('resources/images/docs/information.svg') }}" alt="" class="lg:mb-1 mb-0" />
+              <p class="font-normal text-sm text-gray-900">
+                Lorem ipsum dolor sit amet consectetur. Eget sapien accumsan
+                hendrerit lectus quam.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h2 class="md:text-2xl text-xl font-bold text-gray-900">
+              Key Features
+            </h2>
+            <div
+              class="p-4 bg-white mt-4 rounded-xl border border-gray-200 flex flex-col max-h-40 overflow-y-auto"
+            >
+              <code
+                class="mb-4 text-gray-900 font-normal md:text-[12px] lg:text-sm"
+                >Lorem ipsum dolor sit amet consectetur.</code
+              >
+              <code class="text-gray-900 md:text-[12px] lg:text-sm">
+                This is a quote/highlight
+              </code>
+            </div>
+
+            <ul
+              class="list-disc ml-5 mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md space-y-2"
+            >
+              <li>
+                When installing Node.js, you are recommended to check all
+                checkboxes related to dependencies.
+              </li>
+              <li class="md:mt-2 lg:mt-0">
+                Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+                maecenas in id fermentum.
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <h2 class="md:text-2xl text-xl font-bold text-gray-900">
+              Technology Stack
+            </h2>
+            <h3 class="md:text-xl text-lg md:mt-4 mt-6 text-gray-900 font-bold">
+              Heading 3
+            </h3>
+            <div class="mt-4 rounded-lg">
+              <!-- Header row (badge and icons) -->
+              <div
+                class="flex bg-gray-100 border border-gray-300 p-4 w-full rounded-t-lg justify-between items-center"
+              >
+                <div class="flex space-x-2">
+                  <button
+                    class="badge font-medium p-2 bg-white border border-gray-300 text-gray-900"
+                  >
+                    npm
+                  </button>
+                  <button
+                    class="badge font-medium bg-gray-100 text-gray-400 hover:bg-white hover:text-gray-900 hover:border hover:border-gray-300 border-none p-2 border-gray-300"
+                  >
+                    yarn
+                  </button>
+                  <button
+                    class="badge font-medium bg-gray-100 text-gray-400 hover:bg-white hover:text-gray-900 hover:border hover:border-gray-300 border-none p-2"
+                  >
+                    pnpm
+                  </button>
+                </div>
+                <div class="flex justify-center items-center space-x-1">
+                  <button>
+                    <img src="{{ asset('resources/images/docs/copy.svg') }}" alt="copy" class="h-6 w-6" />
+                  </button>
+                  <button>
+                    <img src="{{ asset('resources/images/docs/play.svg') }}" alt="play" class="h-6 w-6" />
+                  </button>
+                </div>
+              </div>
+
+              <!-- Body row (code content) -->
+              <div
+                class="bg-white border border-gray-300 p-4 w-full rounded-b-lg"
+              >
+                <code class="text-green-600 md:text-[12px] lg:text-sm"
+                  >npm
+                  <span class="text-gray-900"
+                    >install tailwindcss@latest</span
+                  ></code
+                >
+              </div>
+            </div>
+            <div class="mt-4 rounded-lg">
+              <!-- Header row (badge and icons) -->
+              <div
+                class="flex bg-gray-100 border border-gray-300 p-4 w-full rounded-t-lg justify-between items-center"
+              >
+                <div class="flex space-x-2">
+                  <button
+                    class="badge font-medium bg-white text-gray-900 border-gray-300 p-2"
+                  >
+                    inter.css
+                  </button>
+                </div>
+                <div class="flex justify-center items-center space-x-1">
+                  <button>
+                    <img src="{{ asset('resources/images/docs/copy.svg') }}" alt="copy" class="h-6 w-6" />
+                  </button>
+                  <button>
+                    <img src="{{ asset('resources/images/docs/play.svg') }}" alt="play" class="h-6 w-6" />
+                  </button>
+                </div>
+              </div>
+
+              <!-- Body row (code content) -->
+              <div
+                class="bg-white border border-gray-300 p-1 md:p-4 w-full rounded-b-lg overflow-x-auto"
+              >
+                <code
+                  class="text-gray-900 text-sm md:text-[12px] lg:text-sm md:p-0"
+                >
+                  &lt;link rel=<span class="text-blue-600"
+                    >&quot;stylesheet&quot;</span
+                  >
+                  href=<span class="text-blue-600"
+                    >&quot;https://rsms.me/inter/inter.css&quot;</span
+                  >&gt;<br />
+                  :class=<span class="text-blue-600">&quot;</span> {<span
+                    class="text-green-600"
+                    >'translate-x-5': isOn,</span
+                  >
+                  <span class="text-green-600">'translate-x-0' : !isOn }</span>
+                  <span class="text-blue-600">&quot;</span>
+                </code>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-4 bg-green-50 border-green-400 text-green-700 p-2 rounded-lg"
+          >
+            <div class="flex gap-2">
+              <img
+                src="{{ asset('resources/images/docs/lamp-on.svg') }}"
+                alt=""
+                class="lg:mb-12 md:mb-20 mb-24"
+              />
+              <p class="text-sm">
+                Lorem ipsum dolor sit amet consectetur. Eget sapien accumsan
+                hendrerit lectus quam. Facilisis purus risus rutrum odio elit et
+                mauris. Eget odio dictumst ante porttitor volutpat mattis.
+                Pellentesque aliquet lorem aenean purus dapibus urna massa.
+              </p>
+              <div></div>
+            </div>
+          </div>
+
+          <!-- Responsive Paragraph Section -->
+          <div
+            class="mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md"
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+              <a href="#" class="text-gray-900 underline">maecenas</a> in id
+              fermentum. Pellentesque feugiat dolor sit sagittis.
+              <span class="font-semibold">Scelerisque nibh nunc</span> fermentum
+              semper ullamcorper diam aenean.Cras purus mauris egestas
+              <a href="#" class="text-blue-600 underline">lectus vel</a>.
+              Subscript2, Superscript2
+            </p>
+          </div>
+          <h1 class="md:text-2xl text-xl font-bold text-gray-900 mt-8">
+            Why Use CursorLens?
+          </h1>
+          <div
+            class="mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md"
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+              maecenas in id fermentum. Pellentesque feugiat dolor sit sagittis.
+              Scelerisque nibh nunc fermentum semper ullamcorper diam aenean.
+              Cras purus mauris egestas lectus vel.
+            </p>
+          </div>
+          <h3 class="md:text-2xl text-xl font-bold text-gray-900 mt-8">
+            1. Heading 3
+          </h3>
+          <h4 class="md:text-2xl text-lg font-bold text-gray-900 mt-8">
+            Lorem Ipsum (H4)
+          </h4>
+
+          <div
+            class="mt-4 bg-red-50 border-red-400 text-red-700 p-2 rounded-lg"
+          >
+            <div class="flex gap-2 items-center">
+              <img
+                src="{{ asset('resources/images/docs/danger.svg') }}"
+                alt=""
+                class="lg:mb-7 md:mb-10 mb-11"
+              />
+              <div>
+                <p class="text-sm">
+                  Lorem ipsum dolor sit amet consectetur. Eget sapien accumsan
+                  hendrerit lectus quam. Facilisis purus risus rutrum odio elit
+                  et mauris.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Responsive Paragraph Section -->
+          <div
+            class="mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md"
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies lectus
+              odio suscipit pharetra. Neque diam viverra libero nisi fringilla
+              in morbi nisi. Porta leo cras fringilla posuere. Ornare ultrices
+              aliquam semper cursus sodales at blandit ac. Erat in id justo
+              maecenas diam quis quis. Pellentesque cursus consequat est
+              pulvinar lectus viverra lectus egestas
+            </p>
+          </div>
+          <div class="mt-6">
+            <!-- Monorepos (H4) -->
+            <h4 class="md:text-xl text-lg font-semibold text-gray-900 mb-4">
+              Monorepos (H4)
+            </h4>
+
+            <!-- Lorem Ipsum (H5) -->
+            <h5 class="text-lg font-semibold mb-2 text-gray-900">
+              Lorem Ipsum (H5)
+            </h5>
+
+            <!-- Table Section -->
+            <div class="overflow-x-auto">
+              <table
+                class="table-auto w-full border border-gray-200 rounded-md"
+              >
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th
+                      class="border text-gray-900 font-medium text-md border-gray-300 px-4 py-2"
+                    >
+                      Table Header
+                    </th>
+                    <th
+                      class="border text-gray-900 font-medium text-md border-gray-300 px-4 py-2"
+                    >
+                      Table Header
+                    </th>
+                    <th
+                      class="border border-gray-300 px-4 py-2 text-gray-900 font-medium text-md"
+                    >
+                      Table Header
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                    <td
+                      class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md"
+                    >
+                      Table Cell
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Ordered List Section -->
+            <ol
+              class="list-decimal list-inside mt-4 space-y-2 text-gray-900 marker:text-gray-400 text-sm sm:text-sm md:text-base lg:text-md"
+            >
+              <li>
+                Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+                lectus odio suscipit pharetra.
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+                maecenas in id fermentum. Pellentesque feugiat dolor sit
+                sagittis.
+              </li>
+            </ol>
+
+            <!-- Lorem Ipsum (H5) -->
+            <h5 class="text-lg font-semibold mt-6 text-gray-900">
+              Lorem Ipsum (H5)
+            </h5>
+            <p
+              class="text-gray-900 mt-2 text-sm sm:text-sm md:text-base lg:text-md"
+            >
+              Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies lectus
+              odio suscipit pharetra. Neque diam viverra libero nisi fringilla
+              in morbi nisi.
+            </p>
+
+            <!-- Monorepos (H4) -->
+            <h4 class="text-xl font-semibold text-gray-900 mt-8 mb-4">
+              Monorepos (H4)
+            </h4>
+
+            <!-- Card Section start -->
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+              <!-- Card 1 -->
+              <div class="p-4 bg-gray-200 rounded-lg">
+                <h5 class="font-semibold text-gray-900 text-lg">Lorem Ipsum</h5>
+                <p class="text-sm mt-2 text-gray-900">
+                  Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+                  lectus odio suscipit pharetra.
+                </p>
+              </div>
+              <!-- Card 2 -->
+              <div class="p-4 bg-gray-200 rounded-lg">
+                <h5 class="font-semibold text-gray-900 text-lg">Lorem Ipsum</h5>
+                <p class="text-sm mt-2 text-gray-900">
+                  Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+                  lectus odio suscipit pharetra.
+                </p>
+              </div>
+            </div>
+            <!-- Card Section end -->
+
+            <h5 class="text-lg font-semibold mt-4 text-gray-900">
+              Lorem Ipsum (H5)
+            </h5>
+            <h6 class="md:text-md text-lg font-semibold mt-6 text-gray-900">
+              Lorem Ipsum (H6)
+            </h6>
+            <div
+              class="text-gray-900 font-normal mt-4 text-sm sm:text-sm md:text-base lg:text-md"
+            >
+              <p>
+                Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+                lectus odio suscipit pharetra. Neque diam viverra libero nisi
+                fringilla in morbi nisi. Porta leo cras fringilla posuere.
+                Ornare ultrices aliquam semper cursus sodales at blandit ac.
+                Erat in id justo maecenas diam quis quis. Pellentesque cursus
+                consequat est pulvinar lectus viverra lectus egestas.
+              </p>
+            </div>
+
+            <h5 class="text-lg font-semibold mt-4 text-gray-900">
+              Lorem Ipsum (H5)
+            </h5>
+            <div
+              class="text-gray-900 font-normal mt-4 text-sm sm:text-sm md:text-base lg:text-md"
+            >
+              <p>
+                Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+                lectus odio suscipit pharetra. Neque diam viverra libero nisi
+                fringilla in morbi nisi.
+              </p>
+            </div>
+            <h3 class="md:text-2xl text-xl font-bold text-gray-900 mt-8">
+              2. Heading 3
+            </h3>
+            <div class="mt-4 flex">
+              <div class="max-w-full h-auto">
+                <img
+                  src="{{ asset('resources/images/docs/coding.png') }}"
+                  alt="coding"
+                  class="max-w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Center Content end -->
+
+        <!-- Right Sidebar (Info/Related Content) - Desktop Only - start -->
+        <div
+          class="hidden mt-8 lg:block p-4 lg:w-1/4 flex flex-col h-screen sticky top-4"
+        >
+          <div class="">
+            <h2 class="font-medium text-gray-900 text-lg lg:text-xl mb-4">
+              On this page
+            </h2>
+            <ul class="list-disc ml-5 space-y-4">
+              <li class="font-normal text-gray-900 text-md">
+                <a href="#">Key Features</a>
+              </li>
+              <li class="font-normal text-gray-300 hover:text-gray-900 text-md">
+                <a href="#">Technology Stack</a>
+              </li>
+              <li class="font-normal text-gray-300 hover:text-gray-900 text-md">
+                <a href="#">Why Use CursorLens?</a>
+              </li>
+            </ul>
+            <div class="bg-gray-100 rounded-lg p-8 mt-[52vh] w-3/4 ml-12"></div>
+            <!-- Kotak abu-abu di bawah -->
+          </div>
+        </div>
+
+        <!-- Right Sidebar (Info/Related Content) - Desktop Only - end -->
+      </div>
+    </main>
+
+    <!-- Include JavaScript -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchModal = document.getElementById("search-modal");
+        const closeSearchModal = document.getElementById("close-search-modal");
+        const searchInput = document.getElementById("modal-search-input");
+        console.log("Input element:", searchInput);
+        const searchResults = document.getElementById("search-results");
+        const notFoundMessage = document.getElementById("not-found");
+
+        const items = [
+          { name: "Installation", link: "#installation" },
+          { name: "Configuration", link: "#configuration" },
+          { name: "Playbook", link: "#playbook" },
+          { name: "User Guide", link: "#user-guide" },
+          { name: "FAQ", link: "#faq" },
+        ];
+
+        // Debounce function untuk mengurangi jumlah panggilan fungsi
+        function debounce(func, delay) {
+          let timeout;
+          return function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, arguments), delay);
+          };
+        }
+
+        // Fungsi untuk mencari item berdasarkan query
+        function searchItems(query) {
+          console.log("Mencari: ", query); // Log untuk melihat input query
+          searchResults.innerHTML = ""; // Kosongkan hasil sebelumnya
+          const lowerCaseQuery = query.toLowerCase();
+
+          // Filter item berdasarkan query
+          const filteredItems = items.filter((item) =>
+            item.name.toLowerCase().includes(lowerCaseQuery)
+          );
+
+          console.log("Filtered Items: ", filteredItems); // Log hasil filter
+
+          if (filteredItems.length > 0) {
+            notFoundMessage.classList.add("hidden");
+            const fragment = document.createDocumentFragment();
+
+            filteredItems.forEach((item) => {
+              const li = document.createElement("li");
+              li.classList.add("mt-4", "bg-gray-100", "rounded-xl");
+              li.innerHTML = `
+          <a href="${item.link}" class="block p-2 hover:bg-gray-100 font-normal text-gray-900 text-sm md:text-md">
+            ${item.name}
+            <p class="font-bold text-sm md:text-md text-green-500 mt-2">${item.link}</p>
+          </a>`;
+              fragment.appendChild(li);
+            });
+
+            searchResults.appendChild(fragment);
+            searchResults.classList.remove("hidden");
+          } else {
+            searchResults.classList.add("hidden");
+            notFoundMessage.classList.remove("hidden");
+          }
+        }
+
+        // Event listener untuk input pencarian dengan debounce
+        searchInput.addEventListener(
+          "input",
+          debounce(function () {
+            const query = searchInput.value.trim();
+            if (query) {
+              searchItems(query);
+            } else {
+              searchResults.innerHTML = ""; // Kosongkan hasil
+              notFoundMessage.classList.add("hidden"); // Sembunyikan pesan 'Not Found'
+            }
+          }, 300)
+        );
+
+        // Fungsi untuk membuka modal
+        function openModal() {
+          searchModal.classList.remove("hidden");
+          document.body.classList.add("overflow-hidden");
+          searchResults.innerHTML = ""; // Kosongkan hasil pencarian saat modal dibuka
+          notFoundMessage.classList.add("hidden");
+          searchInput.focus(); // Fokus pada input pencarian
+          console.log("Modal dibuka"); // Log saat modal dibuka
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal() {
+          searchModal.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+          searchResults.innerHTML = "";
+          notFoundMessage.classList.add("hidden");
+          console.log("Modal ditutup"); // Log saat modal ditutup
+        }
+
+        // Event listener untuk menutup modal saat tombol close diklik
+        closeSearchModal.addEventListener("click", closeModal);
+
+        // Event listener untuk menutup modal saat mengklik di luar modal
+        window.addEventListener("click", function (event) {
+          if (event.target === searchModal) {
+            closeModal();
+          }
+        });
+
+        // Event listener untuk membuka modal
+        const openSearchModalInput = document.getElementById(
+          "open-search-modal-input"
+        );
+        openSearchModalInput.addEventListener("click", openModal);
+
+        // Event listener untuk membuka/tutup modal dengan Ctrl + K atau Cmd + K
+        window.addEventListener("keydown", function (event) {
+          if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+            event.preventDefault();
+            if (searchModal.classList.contains("hidden")) {
+              openModal();
+            } else {
+              closeModal();
+            }
+          }
+        });
+      });
+    </script>
+@end
