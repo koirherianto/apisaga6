@@ -1,0 +1,222 @@
+<header class="h-[72px] container mx-auto ">
+    <!-- navbar-start -->
+    <nav class="navbar flex bg-white items-center border-b">
+      <!-- sidebar mobile version start -->
+      <div class="drawer block md:hidden mt-2">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+          <!-- Page content here -->
+          <label for="my-drawer" class="flex gap-1 z-30">
+            <img src="{{ asset('resources/images/docs/menu.svg') }}" alt="open & clone drawer" />
+            <a class="text-2xl md:text-xl text-slate-900 font-bold block md:hidden mt-1">Apisaga</a>
+          </label>
+        </div>
+        <div class="drawer-side z-20">
+          <label for="my-drawer" class="drawer-overlay" aria-label="close sidebar">
+            <i class="fas fa-times"></i>
+          </label>
+          <ul class="menu bg-white text-base-content min-h-full w-full p-4">
+  
+            <!-- leftbar mobile punya topbar | mobile Start -->
+            @!component('components/pages/docs/header/mobile/topbar_dari_leftbar', {  })
+            {{-- leftbar mobile punya topbar | mobile End  --}}
+  
+            <!-- Leftbar Mobile content here Start-->
+            @!component('components/pages/docs/header/mobile/lists_page', {  })
+            <!-- Leftbar Mobile content here End -->
+          </ul>
+        </div>
+      </div>
+      <!-- sidebar mobile version end -->
+  
+      <!-- navbar desktop start -->
+      @!component('components/pages/docs/header/desktop/menu_item', {  })
+  
+      <div class="flex-none gap-4 md:gap-1 mt-[10px] md:mt-0">
+        <!-- search with modal Start -->
+        @!component('components/pages/docs/header/desktop/search_field', {  })
+        {{-- search with modal Ends  --}}
+  
+        {{-- swith dark / light mode  --}}
+        @!component('components/pages/docs/header/desktop/light_dark_icon', {  })
+        {{-- swith dark / light mode Ends  --}}
+  
+        <!-- dropdown Language Start -->
+        @!component('components/pages/docs/header/desktop/dropdown_language', {  })
+        {{-- dropdown Language Ends  --}}
+  
+        <!-- dropdown verison Desktop Start -->
+        @!component('components/pages/docs/header/desktop/dropdown_version', {  })
+        {{-- dropdown verison Desktop Ends  --}}
+  
+        <!-- dropdown profile Desktop Start -->
+        @!component('components/pages/docs/header/desktop/dropdown_profile', {  })
+        {{-- dropdown profile Desktop Ends  --}}
+  
+       <!-- navbar desktop end -->
+  
+  
+       
+        <!-- Sidebar right tab and mobile version start -->
+        <div class="lg:hidden block gap-2 z-10">
+          <div class="drawer drawer-end">
+            <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+  
+            <div class="drawer-content">
+              <!-- Page content here -->
+              <label for="my-drawer-4" class="w-24 h-24 hover:bg-slate-100">
+                <img src="{{ asset('resources/images/docs/more-circle.svg') }}" alt="Menu icon"
+                  class="w-[32px] h-[32px]" />
+              </label>
+            </div>
+  
+            <div class="drawer-side">
+              <label for="my-drawer-4" class="drawer-overlay"></label>
+              <ul class="menu bg-white text-base-content min-h-full md:w-80 w-full p-4 space-y-3">
+                {{--  Topbar dari leftbar Tab & mobile  --}}
+                @!component('components/pages/docs/header/tab_and_mobile/topbar_dari_rightbar', {  })
+  
+                <!-- Menu / Sidebar Items -->
+                @!component('components/pages/docs/header/tab_and_mobile/list_menu', {  })
+  
+                <!-- Versions Dropdown -->
+                @!component('components/pages/docs/header/tab_and_mobile/list_version', {  })
+  
+                <!-- Language Dropdown Tab & Mobile -->
+                @!component('components/pages/docs/header/tab_and_mobile/list_language', {  })
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar right tab and mobile version end -->
+      </div>
+    </nav>
+  </header>
+  
+  
+  <!-- Include JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchModal = document.getElementById("search-modal");
+      const closeSearchModal = document.getElementById("close-search-modal");
+      const searchInput = document.getElementById("modal-search-input");
+      console.log("Input element:", searchInput);
+      const searchResults = document.getElementById("search-results");
+      const notFoundMessage = document.getElementById("not-found");
+  
+      const items = [
+        { name: "Installation", link: "#installation" },
+        { name: "Configuration", link: "#configuration" },
+        { name: "Playbook", link: "#playbook" },
+        { name: "User Guide", link: "#user-guide" },
+        { name: "FAQ", link: "#faq" },
+      ];
+  
+      // Debounce function untuk mengurangi jumlah panggilan fungsi
+      function debounce(func, delay) {
+        let timeout;
+        return function () {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, arguments), delay);
+        };
+      }
+  
+      // Fungsi untuk mencari item berdasarkan query
+      function searchItems(query) {
+        console.log("Mencari: ", query); // Log untuk melihat input query
+        searchResults.innerHTML = ""; // Kosongkan hasil sebelumnya
+        const lowerCaseQuery = query.toLowerCase();
+  
+        // Filter item berdasarkan query
+        const filteredItems = items.filter((item) =>
+          item.name.toLowerCase().includes(lowerCaseQuery)
+        );
+  
+        console.log("Filtered Items: ", filteredItems); // Log hasil filter
+  
+        if (filteredItems.length > 0) {
+          notFoundMessage.classList.add("hidden");
+          const fragment = document.createDocumentFragment();
+  
+          filteredItems.forEach((item) => {
+            const li = document.createElement("li");
+            li.classList.add("mt-4", "bg-gray-100", "rounded-xl");
+            li.innerHTML = `
+        <a href="${item.link}" class="block p-2 hover:bg-gray-100 font-normal text-gray-900 text-sm md:text-md">
+          ${item.name}
+          <p class="font-bold text-sm md:text-md text-green-500 mt-2">${item.link}</p>
+        </a>`;
+            fragment.appendChild(li);
+          });
+  
+          searchResults.appendChild(fragment);
+          searchResults.classList.remove("hidden");
+        } else {
+          searchResults.classList.add("hidden");
+          notFoundMessage.classList.remove("hidden");
+        }
+      }
+  
+      // Event listener untuk input pencarian dengan debounce
+      searchInput.addEventListener(
+        "input",
+        debounce(function () {
+          const query = searchInput.value.trim();
+          if (query) {
+            searchItems(query);
+          } else {
+            searchResults.innerHTML = ""; // Kosongkan hasil
+            notFoundMessage.classList.add("hidden"); // Sembunyikan pesan 'Not Found'
+          }
+        }, 300)
+      );
+  
+      // Fungsi untuk membuka modal
+      function openModal() {
+        searchModal.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+        searchResults.innerHTML = ""; // Kosongkan hasil pencarian saat modal dibuka
+        notFoundMessage.classList.add("hidden");
+        searchInput.focus(); // Fokus pada input pencarian
+        console.log("Modal dibuka"); // Log saat modal dibuka
+      }
+  
+      // Fungsi untuk menutup modal
+      function closeModal() {
+        searchModal.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+        searchResults.innerHTML = "";
+        notFoundMessage.classList.add("hidden");
+        console.log("Modal ditutup"); // Log saat modal ditutup
+      }
+  
+      // Event listener untuk menutup modal saat tombol close diklik
+      closeSearchModal.addEventListener("click", closeModal);
+  
+      // Event listener untuk menutup modal saat mengklik di luar modal
+      window.addEventListener("click", function (event) {
+        if (event.target === searchModal) {
+          closeModal();
+        }
+      });
+  
+      // Event listener untuk membuka modal
+      const openSearchModalInput = document.getElementById(
+        "open-search-modal-input"
+      );
+      openSearchModalInput.addEventListener("click", openModal);
+  
+      // Event listener untuk membuka/tutup modal dengan Ctrl + K atau Cmd + K
+      window.addEventListener("keydown", function (event) {
+        if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+          event.preventDefault();
+          if (searchModal.classList.contains("hidden")) {
+            openModal();
+          } else {
+            closeModal();
+          }
+        }
+      });
+    });
+  </script>

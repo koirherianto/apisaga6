@@ -10,61 +10,15 @@
       </div>
     </div>
     <h2 class="font-medium mb-4 text-gray-900 mt-6">
-      Project
+      {{--  disini seharusnya parent  --}}
     </h2>
     <ul class="ml-3">
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Instruction</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Providers</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Changelog</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Roadmap</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">FAQ</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Project Structure</a>
-      </li>
+      @each(page in pages)
+        <li>
+          <a href="/{{project.slug}}/{{version.slug}}/{{topbar.slug}}/{{page.slug}}" class="block py-2 hover:text-gray-900 active:text-gray-900">{{ page.name }}</a>
+        </li>
+      @end
     </ul>
 
-    <h2 class="font-medium text-xl mt-6 mb-4 text-gray-900">
-      Getting Started
-    </h2>
-    <ul class="ml-3">
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Installation</a>
-      </li>
-    </ul>
-    <h2 class="font-medium text-xl mt-6 mb-4 text-gray-900">
-      Guides
-    </h2>
-    <ul class="ml-3">
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Enable Anthropic Cache</a>
-      </li>
-    </ul>
-    <h2 class="font-medium text-xl mt-6 mb-4 text-gray-900">
-      Pages
-    </h2>
-    <ul class="ml-3">
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Dashboard</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Logs</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Configuration</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 hover:text-gray-900 active:text-gray-900">Statistics</a>
-      </li>
-    </ul>
   </div>
 </div>

@@ -1,0 +1,58 @@
+<div class="md:block lg:hidden mt-8 w-full bg-white border border-1 border-b-2 border-gray-300 p-2 rounded-lg">
+    <div class="dropdown flex items-center justify-between w-full">
+        <label tabindex="0" class="cursor-pointer flex items-center justify-between w-full">
+            <span class="text-sm font-normal text-gray-900 ml-4">On this page</span>
+            <img src="{{ asset('resources/images/docs/arrow-down-tab.svg') }}" alt="" />
+        </label>
+        <ul id="mobile-toc-list" tabindex="0" class="dropdown-content menu p-2 shadow bg-white rounded-box w-52">
+            <!-- Table Of Conten Di Generate Otomatis -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const content = document.querySelector('.markdown-body');
+        const tocListMobile = document.getElementById('mobile-toc-list');
+
+        // Function to generate TOC for mobile
+        function generateMobileTOC() {
+            tocListMobile.innerHTML = ''; // Clear previous TOC entries
+            const headers = content.querySelectorAll('h2, h3, h4');
+
+            headers.forEach((header, index) => {
+                if (!header.id) {
+                    header.id = 'toc-header-mobile-' + index;
+                }
+
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + header.id;
+                link.textContent = header.textContent;
+
+                listItem.appendChild(link);
+                tocListMobile.appendChild(listItem);
+
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.getElementById(header.id).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Initial TOC generation
+        generateMobileTOC();
+
+        // Monitor changes in the main content for mobile
+        const observerMobile = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    generateMobileTOC(); // Regenerate TOC on content change
+                }
+            });
+        });
+
+        observerMobile.observe(content, { childList: true, subtree: true });
+    });
+</script>
+

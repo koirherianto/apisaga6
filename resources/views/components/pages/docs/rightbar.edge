@@ -3,19 +3,64 @@
     <h2 class="font-medium text-gray-900 text-lg lg:text-xl mb-4">
       On this page
     </h2>
-    <ul class="list-disc ml-5 space-y-4">
-      <li class="font-normal text-gray-900 text-md">
-        <a href="#">Key Features</a>
-      </li>
-      <li class="font-normal text-gray-300 hover:text-gray-900 text-md">
-        <a href="#">Technology Stack</a>
-      </li>
-      <li class="font-normal text-gray-300 hover:text-gray-900 text-md">
-        <a href="#">Why Use CursorLens?</a>
-      </li>
+    <ul id="toc-list" class="list-disc ml-5 space-y-4">
+      <!-- TOC akan dihasilkan di sini secara dinamis -->
     </ul>
     <div class="bg-gray-100 rounded-lg p-8 mt-[52vh] w-3/4 ml-12">
     </div>
-    <!-- Kotak abu-abu di bawah -->
   </div>
 </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('.markdown-body');
+      const tocList = document.getElementById('toc-list');
+
+      // Function to generate TOC dynamically
+      function generateTOC() {
+          tocList.innerHTML = ''; // Clear previous TOC entries
+          const headers = content.querySelectorAll('h2, h3, h4');
+
+          headers.forEach((header, index) => {
+              if (!header.id) {
+                  header.id = 'toc-header-' + index;
+              }
+
+              const listItem = document.createElement('li');
+              const link = document.createElement('a');
+              link.href = '#' + header.id;
+              link.textContent = header.textContent;
+              link.classList.add('hover:underline');
+
+              if (header.tagName === 'H3') {
+                  listItem.classList.add('ml-4');
+              } else if (header.tagName === 'H4') {
+                  listItem.classList.add('ml-8');
+              }
+
+              listItem.appendChild(link);
+              tocList.appendChild(listItem);
+
+              link.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  document.getElementById(header.id).scrollIntoView({ behavior: 'smooth' });
+              });
+          });
+      }
+
+      // Initial TOC generation
+      generateTOC();
+
+      // Monitor changes in the main content
+      const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+              if (mutation.type === 'childList') {
+                  generateTOC(); // Regenerate TOC on content change
+              }
+          });
+      });
+
+      observer.observe(content, { childList: true, subtree: true });
+  });
+</script>

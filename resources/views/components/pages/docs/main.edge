@@ -1,0 +1,408 @@
+<div class="w-full md:w-2/3 lg:w-3/5 xl:w-1/2 p-4 mt-8 flex flex-col">
+  <div>
+    <p class="text-sm">
+      Getting Started /
+        <span class="font-sm font-normal text-gray-900">Instruction</span>
+    </p>
+  </div>
+  <div class="flex items-center gap-4 mt-4">
+    <div class="flex gap-2">
+      <img src="{{ asset('resources/images/docs/eye.svg') }}" alt="eye" />
+      <p class="text-sm font-normal">
+        1k watching
+      </p>
+    </div>
+
+    <div class="flex gap-2">
+      <img src="{{ asset('resources/images/docs/magic-star.svg') }}" alt="star" />
+      <p class="text-sm font-normal">
+        77.9 stars
+      </p>
+    </div>
+    <div class="flex gap-2">
+      <img src="{{ asset('resources/images/docs/document.svg') }}" alt="document" />
+      <p class="text-sm font-normal">
+        MIT License
+      </p>
+    </div>
+  </div>
+  <!-- tab only on this page  -->
+  <div
+    class="md:block lg:hidden mt-8 w-full bg-white border border-1 border-b-2 border-gray-300 p-2 rounded-lg"
+  >
+    <div class="dropdown flex items-center justify-between w-full">
+      <label tabindex="0" class="cursor-pointer flex items-center justify-between w-full">
+        <span class="text-sm font-normal text-gray-900 ml-4">On this page</span>
+        <img src="{{ asset('resources/images/docs/arrow-down-tab.svg') }}" alt="" />
+      </label>
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-white rounded-box w-52">
+        <li>
+          <a href="#">Section 1</a>
+        </li>
+        <li>
+          <a href="#">Section 2</a>
+        </li>
+        <li>
+          <a href="#">Section 3</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h1 class="md:text-3xl text-2xl font-bold text-gray-900">
+      Instruction
+    </h1>
+    <div class="p-4 lg:p-2 bg-gray-100 mt-4 rounded-md flex items-center lg:gap-1 md:gap-3 gap-3">
+      <img src="{{ asset('resources/images/docs/information.svg') }}" alt="" class="lg:mb-1 mb-0" />
+      <p class="font-normal text-sm text-gray-900">
+        Lorem ipsum dolor sit amet consectetur. Eget sapien accumsan
+          hendrerit lectus quam.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h2 class="md:text-2xl text-xl font-bold text-gray-900">
+      Key Features
+    </h2>
+    <div
+      class="p-4 bg-white mt-4 rounded-xl border border-gray-200 flex flex-col max-h-40 overflow-y-auto"
+    >
+      <code class="mb-4 text-gray-900 font-normal md:text-[12px] lg:text-sm">Lorem ipsum dolor sit amet consectetur.</code>
+      <code class="text-gray-900 md:text-[12px] lg:text-sm">
+        This is a quote/highlight
+        </code>
+    </div>
+
+    <ul
+      class="list-disc ml-5 mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md space-y-2"
+    >
+      <li>
+        When installing Node.js, you are recommended to check all
+          checkboxes related to dependencies.
+      </li>
+      <li class="md:mt-2 lg:mt-0">
+        Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+          maecenas in id fermentum.
+      </li>
+    </ul>
+  </div>
+
+  <div class="mt-8">
+    <h2 class="md:text-2xl text-xl font-bold text-gray-900">
+      Technology Stack
+    </h2>
+    <h3 class="md:text-xl text-lg md:mt-4 mt-6 text-gray-900 font-bold">
+      Heading 3
+    </h3>
+    <div class="mt-4 rounded-lg">
+      <!-- Header row (badge and icons) -->
+      <div
+        class="flex bg-gray-100 border border-gray-300 p-4 w-full rounded-t-lg justify-between items-center"
+      >
+        <div class="flex space-x-2">
+          <button class="badge font-medium p-2 bg-white border border-gray-300 text-gray-900">
+            npm
+            </button>
+          <button
+            class="badge font-medium bg-gray-100 text-gray-400 hover:bg-white hover:text-gray-900 hover:border hover:border-gray-300 border-none p-2 border-gray-300"
+          >
+            yarn
+            </button>
+          <button
+            class="badge font-medium bg-gray-100 text-gray-400 hover:bg-white hover:text-gray-900 hover:border hover:border-gray-300 border-none p-2"
+          >
+            pnpm
+            </button>
+        </div>
+        <div class="flex justify-center items-center space-x-1">
+          <button>
+            <img src="{{ asset('resources/images/docs/copy.svg') }}" alt="copy" class="h-6 w-6" />
+          </button>
+          <button>
+            <img src="{{ asset('resources/images/docs/play.svg') }}" alt="play" class="h-6 w-6" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Body row (code content) -->
+      <div class="bg-white border border-gray-300 p-4 w-full rounded-b-lg">
+        <code class="text-green-600 md:text-[12px] lg:text-sm">npm
+            <span class="text-gray-900">install tailwindcss
+            @latest
+          </span></code>
+      </div>
+    </div>
+    <div class="mt-4 rounded-lg">
+      <!-- Header row (badge and icons) -->
+      <div
+        class="flex bg-gray-100 border border-gray-300 p-4 w-full rounded-t-lg justify-between items-center"
+      >
+        <div class="flex space-x-2">
+          <button class="badge font-medium bg-white text-gray-900 border-gray-300 p-2">
+            inter.css
+            </button>
+        </div>
+        <div class="flex justify-center items-center space-x-1">
+          <button>
+            <img src="{{ asset('resources/images/docs/copy.svg') }}" alt="copy" class="h-6 w-6" />
+          </button>
+          <button>
+            <img src="{{ asset('resources/images/docs/play.svg') }}" alt="play" class="h-6 w-6" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Body row (code content) -->
+      <div class="bg-white border border-gray-300 p-1 md:p-4 w-full rounded-b-lg overflow-x-auto">
+        <code class="text-gray-900 text-sm md:text-[12px] lg:text-sm md:p-0">
+          &lt;link rel=<span class="text-blue-600">&quot;stylesheet&quot;</span>
+          href=<span class="text-blue-600">&quot;https://rsms.me/inter/inter.css&quot;</span>&gt;<br />
+          :class=<span class="text-blue-600">&quot;</span>{<span class="text-green-600">'translate-x-5': isOn,</span>
+          <span class="text-green-600">'translate-x-0' : !isOn }</span>
+          <span class="text-blue-600">&quot;</span>
+        </code>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 bg-green-50 border-green-400 text-green-700 p-2 rounded-lg">
+    <div class="flex gap-2">
+      <img src="{{ asset('resources/images/docs/lamp-on.svg') }}" alt="" class="lg:mb-12 md:mb-20 mb-24" />
+      <p class="text-sm">
+        Lorem ipsum dolor sit amet consectetur. Eget sapien accumsan
+          hendrerit lectus quam. Facilisis purus risus rutrum odio elit et
+          mauris. Eget odio dictumst ante porttitor volutpat mattis.
+          Pellentesque aliquet lorem aenean purus dapibus urna massa.
+      </p>
+      <div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsive Paragraph Section -->
+  <div class="mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md">
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+        <a href="#" class="text-gray-900 underline">maecenas</a>in id
+        fermentum. Pellentesque feugiat dolor sit sagittis.
+        <span class="font-semibold">Scelerisque nibh nunc</span>fermentum
+        semper ullamcorper diam aenean.Cras purus mauris egestas
+        <a href="#" class="text-blue-600 underline">lectus vel</a>.
+        Subscript2, Superscript2
+    </p>
+  </div>
+  <h1 class="md:text-2xl text-xl font-bold text-gray-900 mt-8">
+    Why Use CursorLens?
+  </h1>
+  <div class="mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md">
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+        maecenas in id fermentum. Pellentesque feugiat dolor sit sagittis.
+        Scelerisque nibh nunc fermentum semper ullamcorper diam aenean.
+        Cras purus mauris egestas lectus vel.
+    </p>
+  </div>
+  <h3 class="md:text-2xl text-xl font-bold text-gray-900 mt-8">
+    1. Heading 3
+  </h3>
+  <h4 class="md:text-2xl text-lg font-bold text-gray-900 mt-8">
+    Lorem Ipsum (H4)
+  </h4>
+
+  <div class="mt-4 bg-red-50 border-red-400 text-red-700 p-2 rounded-lg">
+    <div class="flex gap-2 items-center">
+      <img src="{{ asset('resources/images/docs/danger.svg') }}" alt="" class="lg:mb-7 md:mb-10 mb-11" />
+      <div>
+        <p class="text-sm">
+          Lorem ipsum dolor sit amet consectetur. Eget sapien accumsan
+            hendrerit lectus quam. Facilisis purus risus rutrum odio elit
+            et mauris.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsive Paragraph Section -->
+  <div class="mt-4 text-gray-900 font-normal text-sm sm:text-sm md:text-base lg:text-md">
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies lectus
+        odio suscipit pharetra. Neque diam viverra libero nisi fringilla
+        in morbi nisi. Porta leo cras fringilla posuere. Ornare ultrices
+        aliquam semper cursus sodales at blandit ac. Erat in id justo
+        maecenas diam quis quis. Pellentesque cursus consequat est
+        pulvinar lectus viverra lectus egestas
+    </p>
+  </div>
+  <div class="mt-6">
+    <!-- Monorepos (H4) -->
+    <h4 class="md:text-xl text-lg font-semibold text-gray-900 mb-4">
+      Monorepos (H4)
+    </h4>
+
+    <!-- Lorem Ipsum (H5) -->
+    <h5 class="text-lg font-semibold mb-2 text-gray-900">
+      Lorem Ipsum (H5)
+    </h5>
+
+    <!-- Table Section -->
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full border border-gray-200 rounded-md">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border text-gray-900 font-medium text-md border-gray-300 px-4 py-2">
+              Table Header
+            </th>
+            <th class="border text-gray-900 font-medium text-md border-gray-300 px-4 py-2">
+              Table Header
+            </th>
+            <th class="border border-gray-300 px-4 py-2 text-gray-900 font-medium text-md">
+              Table Header
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+            <td class="border border-gray-300 text-center py-2 px-2 text-gray-900 font-normal text-md">
+              Table Cell
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Ordered List Section -->
+    <ol
+      class="list-decimal list-inside mt-4 space-y-2 text-gray-900 marker:text-gray-400 text-sm sm:text-sm md:text-base lg:text-md"
+    >
+      <li>
+        Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+          lectus odio suscipit pharetra.
+      </li>
+      <li>
+        Lorem ipsum dolor sit amet consectetur. Id elit non nam et donec
+          maecenas in id fermentum. Pellentesque feugiat dolor sit
+          sagittis.
+      </li>
+    </ol>
+
+    <!-- Lorem Ipsum (H5) -->
+    <h5 class="text-lg font-semibold mt-6 text-gray-900">
+      Lorem Ipsum (H5)
+    </h5>
+    <p class="text-gray-900 mt-2 text-sm sm:text-sm md:text-base lg:text-md">
+      Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies lectus
+        odio suscipit pharetra. Neque diam viverra libero nisi fringilla
+        in morbi nisi.
+    </p>
+
+    <!-- Monorepos (H4) -->
+    <h4 class="text-xl font-semibold text-gray-900 mt-8 mb-4">
+      Monorepos (H4)
+    </h4>
+
+    <!-- Card Section start -->
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+      <!-- Card 1 -->
+      <div class="p-4 bg-gray-200 rounded-lg">
+        <h5 class="font-semibold text-gray-900 text-lg">
+          Lorem Ipsum
+        </h5>
+        <p class="text-sm mt-2 text-gray-900">
+          Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+            lectus odio suscipit pharetra.
+        </p>
+      </div>
+      <!-- Card 2 -->
+      <div class="p-4 bg-gray-200 rounded-lg">
+        <h5 class="font-semibold text-gray-900 text-lg">
+          Lorem Ipsum
+        </h5>
+        <p class="text-sm mt-2 text-gray-900">
+          Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+            lectus odio suscipit pharetra.
+        </p>
+      </div>
+    </div>
+    <!-- Card Section end -->
+
+    <h5 class="text-lg font-semibold mt-4 text-gray-900">
+      Lorem Ipsum (H5)
+    </h5>
+    <h6 class="md:text-md text-lg font-semibold mt-6 text-gray-900">
+      Lorem Ipsum (H6)
+    </h6>
+    <div class="text-gray-900 font-normal mt-4 text-sm sm:text-sm md:text-base lg:text-md">
+      <p>
+        Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+          lectus odio suscipit pharetra. Neque diam viverra libero nisi
+          fringilla in morbi nisi. Porta leo cras fringilla posuere.
+          Ornare ultrices aliquam semper cursus sodales at blandit ac.
+          Erat in id justo maecenas diam quis quis. Pellentesque cursus
+          consequat est pulvinar lectus viverra lectus egestas.
+      </p>
+    </div>
+
+    <h5 class="text-lg font-semibold mt-4 text-gray-900">
+      Lorem Ipsum (H5)
+    </h5>
+    <div class="text-gray-900 font-normal mt-4 text-sm sm:text-sm md:text-base lg:text-md">
+      <p>
+        Lorem ipsum dolor sit amet consectetur. Tincidunt ultricies
+          lectus odio suscipit pharetra. Neque diam viverra libero nisi
+          fringilla in morbi nisi.
+      </p>
+    </div>
+    <h3 class="md:text-2xl text-xl font-bold text-gray-900 mt-8">
+      2. Heading 3
+    </h3>
+    <div class="mt-4 flex">
+      <div class="max-w-full h-auto">
+        <img
+          src="{{ asset('resources/images/docs/coding.png') }}"
+          alt="coding"
+          class="max-w-full h-auto object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</div>
