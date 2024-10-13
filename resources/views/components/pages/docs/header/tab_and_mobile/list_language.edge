@@ -9,15 +9,14 @@
     </div>
     <div class="collapse-content">
         <ul class="menu menu-compact border-l-2 border-gray-200 pl-2">
-            <li class="mb-2 bg-gray-100 font-medium text-gray-700 rounded-xl text-sm md:text-lg">
-                <a href="#">Englishaa</a>
-            </li>
-            <li class="mb-2 text-gray-900 text-sm md:text-lg">
+            @each(language in languages)
+                <li class="mb-2 bg-gray-100 font-medium text-gray-700 rounded-xl text-sm md:text-lg">
+                    <a href="#">{{ language }}</a>
+                </li>
+            @end
+            {{--  <li class="mb-2 text-gray-900 text-sm md:text-lg">
                 <a href="#">Indonesia</a>
-            </li>
-            <li class="text-gray-900 text-sm md:text-lg">
-                <a href="#">Arab</a>
-            </li>
+            </li>  --}}
         </ul>
         <!-- Gray box -->
         <div class="w-full bg-gray-100 rounded-lg p-12 mt-32">

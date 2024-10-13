@@ -1,4 +1,15 @@
-<div class="dropdown dropdown-end bg-white md:block hidden">
+{{--  jika dalam keadaan anoymouse  --}}
+<a href="{{ link }}" target="_blank" class="hidden md:block bg-white">
+    <div class="avatar btn btn-ghost btn-circle">
+        <div class="w-8 lg:w-10 rounded-full">
+            <img src="{{ asset('resources/images/docs/git.svg') }}" alt="Tailwind CSS Navbar component" />
+        </div>
+    </div>
+</a>
+
+
+{{--  jika dalam ke adaan login  --}}
+{{--  <div class="dropdown dropdown-end bg-white md:block hidden">
     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="lg:w-10 rounded-full md:w-8">
             <img alt="Tailwind CSS Navbar component" src="{{ asset('resources/images/docs/git.svg') }}" />
@@ -14,4 +25,4 @@
         <li><a>Settings</a></li>
         <li><a>Logout</a></li>
     </ul>
-</div>
+</div>  --}}

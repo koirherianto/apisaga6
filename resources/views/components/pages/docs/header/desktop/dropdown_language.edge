@@ -7,15 +7,17 @@
         </div>
     </div>
     <ul tabindex="0" class="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
-            <a class="justify-between font-medium text-gray-900 active:text-gray-900">
-                Language
-                <span class="badge text-white">New</span>
-            </a>
+        <li class="pointer-events-none">
+            <span class="justify-between font-medium text-gray-900">
+              Language
+            </span>
         </li>
-        <li class="bg-gray-100 font-medium text-gray-700 rounded-xl">
-            <a>English</a>
-        </li>
-        <li><a>Indonesian</a></li>
+        @each(language in languages)
+            <li class="bg-gray-100 font-medium text-gray-700 rounded-xl">
+                <a>{{ language }}</a>
+            </li>
+        @end          
+        
+        {{--  <li><a>Indonesian</a></li>  --}}
     </ul>
 </div>

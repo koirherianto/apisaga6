@@ -8,7 +8,7 @@
           <!-- Page content here -->
           <label for="my-drawer" class="flex gap-1 z-30">
             <img src="{{ asset('resources/images/docs/menu.svg') }}" alt="open & clone drawer" />
-            <a class="text-2xl md:text-xl text-slate-900 font-bold block md:hidden mt-1">Apisaga</a>
+            <a class="capitalize text-2xl md:text-xl text-slate-900 font-bold block md:hidden mt-1">{{ project.title }}</a>
           </label>
         </div>
         <div class="drawer-side z-20">
@@ -18,11 +18,11 @@
           <ul class="menu bg-white text-base-content min-h-full w-full p-4">
   
             <!-- leftbar mobile punya topbar | mobile Start -->
-            @!component('components/pages/docs/header/mobile/topbar_dari_leftbar', {  })
+            @!component('components/pages/docs/header/mobile/topbar_dari_leftbar', { title: project.title })
             {{-- leftbar mobile punya topbar | mobile End  --}}
   
             <!-- Leftbar Mobile content here Start-->
-            @!component('components/pages/docs/header/mobile/lists_page', {  })
+            @!component('components/pages/docs/header/mobile/lists_page', { pages, project, version, topbar })
             <!-- Leftbar Mobile content here End -->
           </ul>
         </div>
@@ -30,7 +30,8 @@
       <!-- sidebar mobile version end -->
   
       <!-- navbar desktop start -->
-      @!component('components/pages/docs/header/desktop/menu_item', {  })
+      @!component('components/pages/docs/header/desktop/menu_item', { menus: ['Docs'] })
+      {{-- navbar desktop end --}}
   
       <div class="flex-none gap-4 md:gap-1 mt-[10px] md:mt-0">
         <!-- search with modal Start -->
@@ -38,25 +39,24 @@
         {{-- search with modal Ends  --}}
   
         {{-- swith dark / light mode  --}}
-        @!component('components/pages/docs/header/desktop/light_dark_icon', {  })
+        @!component('components/pages/docs/header/desktop/light_dark_icon')
         {{-- swith dark / light mode Ends  --}}
   
         <!-- dropdown Language Start -->
-        @!component('components/pages/docs/header/desktop/dropdown_language', {  })
+        @!component('components/pages/docs/header/desktop/dropdown_language', { languages: ['English'] })
         {{-- dropdown Language Ends  --}}
   
         <!-- dropdown verison Desktop Start -->
-        @!component('components/pages/docs/header/desktop/dropdown_version', {  })
+        {{--  @!component('components/pages/docs/header/desktop/dropdown_version', {  })  --}}
         {{-- dropdown verison Desktop Ends  --}}
   
         <!-- dropdown profile Desktop Start -->
-        @!component('components/pages/docs/header/desktop/dropdown_profile', {  })
+        @!component('components/pages/docs/header/desktop/dropdown_profile', { link : 'https://github.com/koirherianto' })
         {{-- dropdown profile Desktop Ends  --}}
   
        <!-- navbar desktop end -->
   
-  
-       
+
         <!-- Sidebar right tab and mobile version start -->
         <div class="lg:hidden block gap-2 z-10">
           <div class="drawer drawer-end">
@@ -74,16 +74,16 @@
               <label for="my-drawer-4" class="drawer-overlay"></label>
               <ul class="menu bg-white text-base-content min-h-full md:w-80 w-full p-4 space-y-3">
                 {{--  Topbar dari leftbar Tab & mobile  --}}
-                @!component('components/pages/docs/header/tab_and_mobile/topbar_dari_rightbar', {  })
+                @!component('components/pages/docs/header/tab_and_mobile/topbar_dari_rightbar', { title: project.title  })
   
                 <!-- Menu / Sidebar Items -->
-                @!component('components/pages/docs/header/tab_and_mobile/list_menu', {  })
+                @!component('components/pages/docs/header/tab_and_mobile/list_menu', { menus: ['Docs'] })
   
                 <!-- Versions Dropdown -->
-                @!component('components/pages/docs/header/tab_and_mobile/list_version', {  })
+                {{--  @!component('components/pages/docs/header/tab_and_mobile/list_version', {  })  --}}
   
                 <!-- Language Dropdown Tab & Mobile -->
-                @!component('components/pages/docs/header/tab_and_mobile/list_language', {  })
+                @!component('components/pages/docs/header/tab_and_mobile/list_language', { languages: ['English'] })
                 
               </ul>
             </div>

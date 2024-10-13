@@ -1,91 +1,56 @@
-@layout.app({ title: project.title + " | Apisaga"})
 
-@slot('meta')
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.6.1/github-markdown.min.css" integrity="sha512-heNHQxAqmr9b5CZSB7/7NSC96qtb9HCeOKomgLFv9VLkH+B3xLgUtP73i1rM8Gpmfaxb7262LFLJaH/hKXyxyA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endslot
+@layout.app({ title: " Apisaga | Write, Manage, and Share Your Documentation."})
 
-<body class="flex">
-    <!-- Left Sidebar -->
-    <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
-        <h1 class="font-mono underline-offset-auto">{{ project.title }}</h1>
-        <div class="flex flex-col justify-between flex-1 mt-6">
-            <nav class="flex-1 -mx-3 space-y-3"> 
-              @each(page in pages)
-                <a
-                    class="flex items-center py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                    href="/{{project.slug}}/{{version.slug}}/{{topbar.slug}}/{{page.slug}}"
-                >
-                    <span class="mx-2 text-sm font-medium">{{ page.name }}</span>
-                </a>
-              @end
-          </nav>
+    @slot('meta')
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.6.1/github-markdown.min.css" integrity="sha512-heNHQxAqmr9b5CZSB7/7NSC96qtb9HCeOKomgLFv9VLkH+B3xLgUtP73i1rM8Gpmfaxb7262LFLJaH/hKXyxyA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @endslot
+
+    @!component('components/pages/docs/header/header', { pages, project, version, topbar })
+
+    <!--blue block notif start -->
+    {{--  @!component('components/pages/docs/block_notif', { blockNotif: { 
+      title: '🎉 Exciting news! CursorLens Now supports Caching for Anthropic', 
+      linkText: 'Check out the guide',
+      link: '#'
+    }})  --}}
+    <!--blue block notif end -->
+
+    <!-- main section start -->
+    <main class="container">
+      <div class="flex lg:flex-row">
+        <!-- Left Sidebar (Menu) - Desktop & Tablet -->
+        @!component('components/pages/docs/leftbar', { pages, project, version, topbar })
+        <!-- Left Sidebar (Menu) - Desktop & Tablet end -->
+
+        <!-- Center Content start -->
+        <div class="w-full md:w-2/3 lg:w-3/5 xl:w-1/2 p-4 mt-8 flex flex-col">
+          @!component('components/pages/docs/breadcrumbs', { breadcrumbs: [project.title, currentPage.name, null] })
+          
+          @!component('components/pages/docs/page_info', { pageInfo : {
+            viewer : '1k', 
+            stars: '77.9', 
+            license: 'MIT License'
+          }})
+
+          <!-- Table Of Content / on this page for Tab & Mobile -->
+          <!--  this detect markdown-body  -->
+          @!component('components/pages/docs/table_of_content_tab') 
+          <!-- Table Of Content / on this page for Tab & Mobile End -->
+
+          <!-- Main start -->
+          <div class="mt-8 markdown-body">
+            {{{ currentPage.content }}}
+          </div>
+          <!-- Main end -->
+
+        </div>
+        <!-- Center Content end -->
+
+        <!-- Right Sidebar / Table Of Content (Info/Related Content) - Desktop Only - start -->
+        @!component('components/pages/docs/table_of_content', { content: currentPage.content })
+         <!-- Right Sidebar / Table Of Content (Info/Related Content) - Desktop Only - end -->
+
       </div>
-  </aside>
-  
-  <!-- Main Content -->
-  <main class="flex-1 p-8 markdown-body">
-      {{{ currentPage.content }}}
-  </main>
+    </main>
 
-  <!-- Right Sidebar for TOC -->
-  <aside id="toc" class="w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-l rtl:border-l-0 rtl:border-r dark:bg-gray-900 dark:border-gray-700">
-      <h2 class="font-bold text-lg mb-4">Table of Contents</h2>
-      <nav id="toc-list" class="space-y-2 text-sm">
-          <!-- Dynamic TOC will be inserted here -->
-      </nav>
-  </aside>
-
-  <!-- Include this script at the end of the body -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const content = document.querySelector('main');
-        const tocList = document.getElementById('toc-list');
-
-        // Function to generate TOC
-        function generateTOC() {
-            tocList.innerHTML = ''; // Clear previous TOC entries
-            const headers = content.querySelectorAll('h2, h3, h4');
-            
-            headers.forEach((header, index) => {
-                if (!header.id) {
-                    header.id = 'toc-header-' + index;
-                }
-
-                const link = document.createElement('a');
-                link.href = '#' + header.id;
-                link.textContent = header.textContent;
-                link.classList.add('block', 'hover:underline');
-                
-                if (header.tagName === 'H3') {
-                    link.classList.add('ml-4');
-                } else if (header.tagName === 'H4') {
-                    link.classList.add('ml-8');
-                }
-
-                tocList.appendChild(link);
-
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    document.getElementById(header.id).scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        }
-
-        // Initial TOC generation
-        generateTOC();
-
-        // Monitor changes in the main content
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'childList') {
-                    generateTOC(); // Regenerate TOC on content change
-                }
-            });
-        });
-
-        observer.observe(content, { childList: true, subtree: true });
-    });
-  </script>
-
-</body>
 @end
