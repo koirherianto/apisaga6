@@ -1,3 +1,4 @@
+import Config from '#models/config'
 import Page from '#models/page'
 import Project from '#models/project'
 import Topbar from '#models/topbar'
@@ -26,6 +27,8 @@ export default class ProjectsController {
   async store({ request, response, auth, session }: HttpContext) {
     const data = await request.validateUsing(createProjectValidator)
     const trx = await db.transaction()
+    const blog1 = await Config.findByOrFail('key', 'blog1')
+    const blog2 = await Config.findByOrFail('key', 'blog2')
 
     try {
       const user = auth.user!
@@ -58,7 +61,18 @@ export default class ProjectsController {
           name: 'Introduction',
           order: 1,
           isDefault: true,
-          content: '# Introduction\n\nThis is the introduction of your project',
+          content: blog1.value,
+        },
+        { client: trx }
+      )
+
+      await Page.create(
+        {
+          topbarId: topBar.id,
+          name: 'A Story',
+          order: 1,
+          isDefault: true,
+          content: blog2.value,
         },
         { client: trx }
       )

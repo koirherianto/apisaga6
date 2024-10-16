@@ -3,6 +3,7 @@ import Project from '#models/project'
 import Topbar from '#models/topbar'
 import Version from '#models/version'
 import { marked } from 'marked'
+import string from '@adonisjs/core/helpers/string'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class PagesController {
@@ -94,6 +95,8 @@ export default class PagesController {
       params.topbarSlug,
       params.pageSlug
     )
+
+    project.title = string.capitalCase(project.title)
 
     return view.render('pages/editor', { project, version, topbar, pages, currentPage })
   }

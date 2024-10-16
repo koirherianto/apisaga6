@@ -76,7 +76,8 @@
 
       {{--  rigt top bar  --}}
       <div class="navbar-end">
-        <a onclick="handleSimpan(); return false;" class="btn btn-success text-gray-50">Simpan</a>
+        <a href="{{ route('pages.index', [project.slug, version.slug, topbar.slug, currentPage.slug]) }}" target="_blank" class="btn mx-4 btn-primary text-gray-50">Preview</a>
+        <a onclick="handleSimpan(); return false;" class="btn btn-success text-gray-50">Save</a>
       </div>
     </div>
   </header>
