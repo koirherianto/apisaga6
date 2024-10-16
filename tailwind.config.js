@@ -18,7 +18,7 @@ export default {
           sm: "2rem",
           md: "0.5rem",
           lg: "0.5rem", // Tidak ada padding untuk layar besar
-          xl: "0rem", // Tidak ada padding untuk layar ekstra besar
+          xl: "2rem", // Tidak ada padding untuk layar ekstra besar
           "2xl": "0rem",
           "3xl": "0rem",
 
