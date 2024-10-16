@@ -3,6 +3,7 @@
 const LandingController = () => import('#controllers/landing_controller')
 const AuthController = () => import('#controllers/auth_controller')
 const ProjectsController = () => import('#controllers/projects_controller')
+const VersionsController = () => import('#controllers/versions_controller')
 const ProfilesController = () => import('#controllers/profiles_controller')
 const PagesController = () => import('#controllers/pages_controller')
 import { middleware } from './kernel.js'
@@ -45,3 +46,8 @@ router.group(() => {
 
 router.get('/u/:username', [ProfilesController, 'show']).as('profiles.show')
 router.get(':projectSlug/:versionSlug/:topbarSlug/:pageSlug', [PagesController, 'index']).as('pages.index')
+
+// default url
+router.get(':projectSlug', [ProjectsController, 'defaultPage'])
+router.get(':projectSlug/:versionSlug', [VersionsController, 'defaultPage'])
+router.get(':projectSlug/:versionSlug/:topbarSlug', [VersionsController, 'defaultPage'])

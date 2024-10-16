@@ -144,4 +144,19 @@ export default class ProjectsController {
 
     return rangkaiUrl
   }
+
+  async defaultPage({ response, params }: HttpContext) {
+    const project = await Project.findByOrFail('slug', params.projectSlug)
+
+    const defaultPage = await this.defaultUrl(project.slug)
+
+    const url: Array<string> = defaultPage.split('/')
+
+    return response.redirect().toRoute('pages.index', {
+      projectSlug: project.slug,
+      versionSlug: url[1],
+      topbarSlug: url[2],
+      pageSlug: url[3],
+    })
+  }
 }
