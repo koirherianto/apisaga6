@@ -28,6 +28,9 @@ export default class Page extends BaseModel {
   declare isDefault: boolean
 
   @column()
+  declare title: string
+
+  @column()
   declare content?: string | null
 
   @column.dateTime({ autoCreate: true })

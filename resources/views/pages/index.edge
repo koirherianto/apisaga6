@@ -1,8 +1,17 @@
 
-@layout.app({ title: " Apisaga | Write, Manage, and Share Your Documentation."})
+@layout.app({ title: currentPage.title})
 
     @slot('meta')
+      {{--  style markdown  --}}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.6.1/github-markdown.min.css" integrity="sha512-heNHQxAqmr9b5CZSB7/7NSC96qtb9HCeOKomgLFv9VLkH+B3xLgUtP73i1rM8Gpmfaxb7262LFLJaH/hKXyxyA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+      <!-- and it's easy to individually load additional languages -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+      <script>hljs.highlightAll();</script>
     @endslot
 
     @!component('components/pages/docs/header/header', { pages, project, version, topbar })
@@ -24,7 +33,7 @@
 
         <!-- Center Content start -->
         {{--  <div class="w-full md:w-2/3 lg:w-3/5 xl:w-1/2 p-4 mt-8 flex flex-col">  --}}
-        <div class="w-full pl-16 p-4 mt-8 flex flex-col">
+        <div class="w-full p-4 mr-12 border mt-8 flex flex-col">
           @!component('components/pages/docs/breadcrumbs', { breadcrumbs: [project.title, currentPage.name, null] })
           
           {{--  @!component('components/pages/docs/page_info', { pageInfo : {

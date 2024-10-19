@@ -134,7 +134,15 @@
 
     <!-- Main Content -->
     <main class="flex-1 p-6">
-      <textarea id="my-text-area"></textarea>
+      <label class="input input-bordered flex items-center gap-2">
+        Title
+        <input name="title" id="title" type="text" value="{{ currentPage.title }}" class="grow" placeholder="Your Title" />
+      </label>
+
+      <textarea 
+        id="my-text-area"
+        class="mt-4 w-full h-40 p-2 border rounded-lg overflow-auto resize-none whitespace-nowrap"></textarea>
+  
     </main>
   </div>
 
@@ -205,8 +213,17 @@
             cm.replaceSelection(table);
           },
         }, 
+        {
+          name: 'xcode',
+          className: "fa fa-code p-0",
+          action: function drawCode(editor) {
+            var cm = editor.codemirror;
+            var code = '~~~\n// code here\n~~~';
+            cm.replaceSelection(code);
+          },
+        },
         'bold', 'italic','strikethrough','|',
-        'code','quote', 'clean-block','unordered-list', 'ordered-list', '|',
+        'quote', 'clean-block','unordered-list', 'ordered-list', '|',
         'link', 'image', '|',
         'preview', 'side-by-side', 'fullscreen', '|',
         'guide',
@@ -222,11 +239,13 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          title: document.getElementById('title').value,
           content: easymde.value(),
         })
       });
 
       const data = await response.json();
+      
       if (data.success) {
         alert('Content saved successfully!');
       } else {

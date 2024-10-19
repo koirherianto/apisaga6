@@ -61,6 +61,7 @@ export default class ProjectsController {
           name: 'Introduction',
           order: 1,
           isDefault: true,
+          title: 'Markdown Example',
           content: blog1.value,
         },
         { client: trx }
@@ -72,6 +73,7 @@ export default class ProjectsController {
           name: 'A Story',
           order: 1,
           isDefault: true,
+          title: 'How APISaga Made Documentation Effortless',
           content: blog2.value,
         },
         { client: trx }

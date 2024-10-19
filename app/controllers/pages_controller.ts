@@ -112,6 +112,7 @@ export default class PagesController {
     )
 
     currentPage.content = request.input('content')
+    currentPage.title = request.input('title')
 
     await currentPage.save()
 
