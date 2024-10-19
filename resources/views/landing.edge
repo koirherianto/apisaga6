@@ -118,10 +118,19 @@
   <!-- Video Section -->
   <section class="max-w-full md:max-w-[80%] mx-5 md:mx-auto my-20 flex justify-center border border-[#E5E7EB] rounded-md shadow-md shadow-[#64646426]">
     <div class="w-full">
-      {{--  <iframe class="w-full aspect-video"
-        src="https://drive.google.com/file/d/11Xpln5n-lw0BfNfLosCdNZIw9rrBgqSE/preview" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>  --}}
+        <div class="diff aspect-[16/9]">
+          <div class="diff-item-1">
+              <div class="bg-base-300 grid place-content-center">
+                  <img src="{{ asset('resources/images/landing/after.webp') }}" alt="after editing" class="max-w-full h-auto" />
+              </div>
+          </div>
+          <div class="diff-item-2">
+              <div class="bg-base-200 grid place-content-center">
+                  <img src="{{ asset('resources/images/landing/before.webp') }}" alt="berfore editing" class="max-w-full h-auto" />
+              </div>
+          </div>
+          <div class="diff-resizer"></div>
+        </div>
     </div>
   </section>
 
