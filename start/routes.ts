@@ -13,6 +13,8 @@ router.get('/tes', async () => {
     return { message: 'Hello world' }
 })
 
+router.get('/a', [LandingController, 'index'])
+
 router.get('/', [LandingController, 'index'])
 
 router.group(() => {

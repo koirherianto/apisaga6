@@ -1,0 +1,68 @@
+
+
+
+
+
+
+
+
+
+
+<footer>
+    
+</footer>
+
+<style>
+    .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+        transition: background-color var(--margin-transition-duration) var(--margin-timing-function);
+    }
+
+    .backdrop.show {
+        pointer-events: all;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Middle */
+    @media screen and (min-width: 768px) {
+        /* Tidak ada perubahan khusus untuk resolusi ini */
+    }
+
+    /* Large */
+    @media screen and (min-width: 1024px) {
+        .backdrop {
+            background-color: transparent;
+            pointer-events: none;
+        }
+
+        .backdrop.show {
+            pointer-events: none;
+            background-color: transparent;
+        }
+
+        main.main-content-wrapper {
+            margin-left: var(--sidebar-width);
+        }
+    }
+
+    /* XLarge */
+    @media screen and (min-width: 1280px) {
+        /* Tidak ada perubahan khusus untuk resolusi ini */
+    }
+
+    /* XXLarge */
+    @media screen and (min-width: 1536px) {
+        /* Tidak ada perubahan khusus untuk resolusi ini */
+    }
+
+    main.main-content-wrapper {
+        transition: margin-left var(--margin-transition-duration) var(--margin-timing-function);
+        margin-left: 0rem;
+    }
+</style>

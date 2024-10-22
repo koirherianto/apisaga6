@@ -7,4 +7,8 @@ export default class LandingController {
 
     return view.render('landing')
   }
+
+  async a({ view }: HttpContext) {
+    return view.render('editor')
+  }
 }
