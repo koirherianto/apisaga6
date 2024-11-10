@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
+    "verbatimModuleSyntax": true,
+    "allowSyntheticDefaultImports": true, // Tambahkan ini
+    "esModuleInterop": true,
     "paths": {
       "~/*": ["./*"],
     },

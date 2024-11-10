@@ -1,10 +1,25 @@
-* {
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --margin-transition-duration: 0.4s;
+  --margin-timing-function: ease;
+  --base-transition-duration: 0.4s; /* Memperbaiki typo: 'transision' */
+  --base-transition-timing-function: ease-in-out; /* Memperbaiki typo: 'transitionn' */
+  --main-sidebar-width: 22.125rem;
+  --menu-sidebar-width: 22.125rem;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
+* {
+  font-family: 'Roboto', sans-serif; /* Pastikan Anda mengimpor font jika dibutuhkan */
+}
+
+.hljs {
+  background-color: #f8fafc; /* slate-50 dalam Tailwind adalah #f8fafc */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 0.75rem; /* rounded-xl dalam Tailwind */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
