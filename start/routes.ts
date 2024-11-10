@@ -13,7 +13,7 @@ router.get('/tes', async () => {
     return { message: 'Hello world' }
 })
 
-router.get('/a', [LandingController, 'index'])
+router.on('/inertia').renderInertia('home')
 
 router.get('/', [LandingController, 'index'])
 
@@ -53,3 +53,4 @@ router.get(':projectSlug/:versionSlug/:topbarSlug/:pageSlug', [PagesController, 
 router.get(':projectSlug', [ProjectsController, 'defaultPage'])
 router.get(':projectSlug/:versionSlug', [VersionsController, 'defaultPage'])
 router.get(':projectSlug/:versionSlug/:topbarSlug', [VersionsController, 'defaultPage'])
+
