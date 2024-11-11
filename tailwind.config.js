@@ -5,6 +5,7 @@ export default {
   content: [
     "./resources/**/*.edge",
     "./resources/**/*.{js,ts,jsx,tsx,vue}",
+    './inertia/{pages,components,app,layouts,types,stores,lib,css}/**/*.{ts,tsx,svelte}',
   ],
   theme: {
     extend: {
