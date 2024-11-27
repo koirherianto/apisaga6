@@ -1,0 +1,43 @@
+@layout.app({ title: "Register | Apisaga" })
+<div class="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+  <div class="w-full max-w-md bg-white rounded-lg shadow-md">
+    <div class="text-center p-6 space-y-1">
+      <h1 class="text-3xl font-bold">Create an account</h1>
+      <p>Enter your information to create your account</p>
+    </div>
+    <div class="p-6">
+      <form class="space-y-4">
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="space-y-2">
+            <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
+            <input id="firstName" type="text" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+          </div>
+          <div class="space-y-2">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Last name</label>
+            <input id="lastName" type="text" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input id="email" type="email" placeholder="m@example.com" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+        </div>
+        <div class="space-y-2">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input id="password" type="password" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+        </div>
+        <div class="space-y-2">
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+          <input id="confirmPassword" type="password" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-2 rounded-md hover:bg-emerald-500">
+          Create account
+        </button>
+      </form>
+      <div class="mt-4 text-center text-sm">
+        Already have an account? 
+        <a href="{{ route('login') }}" class="text-emerald-600 hover:text-emerald-500">Sign in</a>
+      </div>
+    </div>
+  </div>
+</div>
+@end
