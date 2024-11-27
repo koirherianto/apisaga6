@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { attachment } from '@cartamd/plugin-attachment';
-	import { code } from '@cartamd/plugin-code';
-	import { emoji } from '@cartamd/plugin-emoji';
-	import { slash } from '@cartamd/plugin-slash';
-	import { Carta, MarkdownEditor } from 'carta-md';
+	// import { attachment } from '@cartamd/plugin-attachment';
+	// import { code } from '@cartamd/plugin-code';
+	// import { emoji } from '@cartamd/plugin-emoji';
+	// import { slash } from '@cartamd/plugin-slash';
+	// import { Carta, MarkdownEditor } from 'carta-md';
 	import { onMount } from 'svelte';
 
 	// import '~/lib/styles/github.css';
@@ -12,20 +12,20 @@
 	import Preview from '~/components/organisms/editor/Preview.svelte';
 	import Tab from '~/components/organisms/tab/Tab.svelte';
 
-	const carta = new Carta({
-		sanitizer: false,
-		theme: 'everforest-light',
-		extensions: [
-			attachment({
-				async upload() {
-					return 'some-url-from-server.xyz';
-				}
-			}),
-			emoji(),
-			slash(),
-			code()
-		]
-	});
+	// const carta = new Carta({
+	// 	sanitizer: false,
+	// 	theme: 'everforest-light',
+	// 	extensions: [
+	// 		attachment({
+	// 			async upload() {
+	// 				return 'some-url-from-server.xyz';
+	// 			}
+	// 		}),
+	// 		emoji(),
+	// 		slash(),
+	// 		code()
+	// 	]
+	// });
 
 	onMount(() => {
 		const link = document.createElement('link');
@@ -63,16 +63,16 @@ func add(a, b) {
 - [Facebook](https://facebook.com/umardev500)
 `;
 
+const tabs = [
+	{ name: 'Editor', active: true },
+	{ name: 'HTML', active: false },
+	{ name: 'Preview', active: false }
+];
+
 </script>
 
 <div class="border md-editor-container rounded-2xl overflow-hidden mt-[5.5rem]">
-	<Tab
-		tabs={[
-			{ name: 'Editor', active: true },
-			{ name: 'HTML', active: false },
-			{ name: 'Preview', active: false }
-		]}
-	>
+	<Tab tabs={tabs}>
 		<svelte:fragment slot="tab" let:tabs let:toggle let:activeTab>
 			<div class="flex items-center py-4 px-4 justify-between border-b flex-wrap gap-4">
 				<div class="flex tab items-center">
@@ -92,7 +92,8 @@ func add(a, b) {
 
 		<svelte:fragment slot="content" let:activeTab>
 			{#if activeTab === 0}
-				<MarkdownEditor bind:value mode="tabs" theme="github" {carta} />
+				<!-- <MarkdownEditor bind:value mode="tabs" theme="github" {carta} /> -->
+				<HtmlView mdValue={value} />
 			{/if}
 
 			{#if activeTab === 1}

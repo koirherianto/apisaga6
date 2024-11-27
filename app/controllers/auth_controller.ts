@@ -20,7 +20,7 @@ export default class AuthController {
   }
 
   async loginpage({ view }: HttpContext) {
-    return view.render('auth/login')
+    return view.render('auth/login2')
   }
 
   async login({ session, request, response, auth }: HttpContext) {

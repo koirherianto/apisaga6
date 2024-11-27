@@ -7,16 +7,12 @@ import { sveltePreprocess } from 'svelte-preprocess'
 
 export default defineConfig({
   plugins: [
-    adonisjs({
-      entrypoints: ['resources/css/app.css', 'resources/js/app.js'],
-      reload: ['resources/views/**/*.edge'],
-    }),
+    adonisjs({ entrypoints: ['inertia/app/app.ts'], reload: ['resources/views/**/*.edge'] }),
     svelte({
       compilerOptions: { hydratable: true },
       preprocess: sveltePreprocess({ typescript: true }),
     }),
     inertia({ ssr: { enabled: true, entrypoint: 'inertia/app/ssr.ts' } }),
-    adonisjs({ entrypoints: ['inertia/app/app.ts'], reload: ['resources/views/**/*.edge'] }),
   ],
 
   /**
