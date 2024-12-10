@@ -16,7 +16,7 @@ export default class AuthController {
 
     await auth.use('web').login(user)
 
-    response.redirect('/dashboard')
+    response.redirect('/')
   }
 
   async loginpage({ view }: HttpContext) {
