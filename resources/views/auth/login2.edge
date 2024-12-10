@@ -1,0 +1,45 @@
+@layout.app({ title: "Login | Apisaga" })
+
+<body class="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+  <div class="w-full max-w-md bg-white rounded-lg shadow-md">
+    <div class="text-center p-6 space-y-1">
+      <h1 class="text-3xl font-bold">Login</h1>
+      <p>Enter your email and password to login to your account</p>
+    </div>
+    <div class="p-6">
+      <form action="{{ route('login.store') }}" method="POST" class="space-y-4">
+        {{ csrfField() }}
+			  {{--  {{ inspect(flashMessages.all()) }}  --}}
+        <div class="space-y-2">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input name="email" value="{{ old('email') || '' }}" type="email" required placeholder="m@example.com" class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+          @inputError('email')
+            @each(message in $messages)
+              <p>{{ message }}</p>
+            @end
+          @end
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <a href="/forgot-password" class="text-sm text-emerald-600 hover:text-emerald-500">Forgot password?</a>
+          </div>
+          <input name="password" type="password" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+          @inputError('email')
+            @each(message in $messages)
+              <p>{{ message }}</p>
+            @end
+          @end
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-2 rounded-md hover:bg-emerald-500">
+          Sign in
+        </button>
+      </form>
+      <div class="mt-4 text-center text-sm">
+        Don’t have an account? 
+        <a href="{{ route('register') }}" class="text-emerald-600 hover:text-emerald-500">Sign up</a>
+      </div>
+    </div>
+  </div>
+</body>
+@end
